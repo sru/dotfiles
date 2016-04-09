@@ -57,19 +57,23 @@ function! s:EnsureDirExists(dir, ...)
 endfunction
 
 function! s:SetIndentWidth()
+  let l:et = nr2char(getchar())
   let l:width = nr2char(getchar())
   if !l:width
     echoerr "Number expected"
     return
   endif
-  let l:et = nr2char(getchar())
   if l:et ==? 't'
     setlocal noexpandtab
+    let &l:shiftwidth = l:width
+    let &l:softtabstop = 0 " default softtabstop is 0
+    let &l:tabstop = l:width
   elseif l:et ==? 's'
     setlocal expandtab
+    let &l:shiftwidth = l:width
+    let &l:softtabstop = l:width
+    let &l:tabstop = 8 " default tabstop is 8
   endif
-  let &l:softtabstop = l:width
-  let &l:shiftwidth = l:width
 endfunction
 
 function! s:StripTrailingWhite()
