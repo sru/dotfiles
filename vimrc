@@ -6,12 +6,15 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
   call plug#begin($VIMHOME . '/plugged')
 
   " functionality
-  Plug 'junegunn/vim-easy-align'
+  Plug 'tommcdo/vim-lion'
+  Plug 'tpope/vim-commentary'
   Plug 'justinmk/vim-dirvish'
   Plug 'kana/vim-operator-user' | Plug 'rhysd/vim-operator-surround'
 
   " text objects
+  Plug 'wellle/targets.vim'
   Plug 'michaeljsmith/vim-indent-object'
+  Plug 'coderifous/textobj-word-column.vim'
 
   " language
   Plug 'sheerun/vim-polyglot'
@@ -84,6 +87,63 @@ function! s:StripTrailingWhite()
   silent! %s/\s\+$//
   call winrestview(l:winview)
 endfunction
+
+" plugin settings
+
+" vim-operator-surround
+let g:operator#surround#ignore_space = 0
+let g:operator#surround#no_default_blocks = 1
+let g:operator#surround#blocks = {
+\   '-': [
+\     {
+\       'block': ['( ', ' )'],
+\       'motionwise': ['char', 'line', 'block'],
+\       'keys': [' (', ' )'],
+\     },
+\     {
+\       'block': ['{ ', ' }'],
+\       'motionwise': ['char', 'line', 'block'],
+\       'keys': [' {', ' }'],
+\     },
+\     {
+\       'block': ['(', ')'],
+\       'motionwise': ['char', 'line', 'block'],
+\       'keys': ['(', ')'],
+\     },
+\     {
+\       'block': ['[', ']'],
+\       'motionwise': ['char', 'line', 'block'],
+\       'keys': ['[', ']'],
+\     },
+\     {
+\       'block': ['{', '}'],
+\       'motionwise': ['char', 'line', 'block'],
+\       'keys': ['{', '}'],
+\     },
+\     {
+\       'block': ['<', '>'],
+\       'motionwise': ['char', 'line', 'block'],
+\       'keys': ['<', '>'],
+\     },
+\     {
+\       'block': ['"', '"'],
+\       'motionwise': ['char', 'line', 'block'],
+\       'keys': ['"'],
+\     },
+\     {
+\       'block': ["'", "'"],
+\       'motionwise': ['char', 'line', 'block'],
+\       'keys': ["'"],
+\     },
+\     {
+\       'block': ['`', '`'],
+\       'motionwise': ['char', 'line', 'block'],
+\       'keys': ['`'],
+\     },
+\   ],
+\ }
+
+" settings
 
 let mapleader = "\<Space>"
 
@@ -289,15 +349,14 @@ let &viminfo = '''50,<100,s10,h,n' . $VIMHOME . '/viminfo'
 " key bindings
 
 " no highlight
-noremap <silent><leader>/ :nohlsearch<cr>
+noremap <silent> <leader>/ :nohlsearch<cr>
 
 " make j and k move display lines, not actual lines
 nnoremap j gj
 nnoremap k gk
 
 " switch buffers
-nmap ]b :bnext<cr>
-nmap [b :bprevious<cr>
+nnoremap <leader>b :buffers<cr>:buffer<space>
 
 " switch quickfix
 nmap ]q :cnext<cr>
@@ -308,13 +367,6 @@ nnoremap Y y$
 
 " set indent width
 nnoremap <silent> <leader>i :call <SID>SetIndentWidth()<cr>
-
-" save file
-nnoremap <leader>w :write<cr>
-
-" easy align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 
 " operator surround
 nmap <silent>sa <Plug>(operator-surround-append)
