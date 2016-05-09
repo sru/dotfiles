@@ -357,10 +357,12 @@ nnoremap k gk
 
 " switch buffers
 nnoremap <leader>b :buffers<cr>:buffer<space>
+nnoremap ]b :bnext<cr>
+nnoremap [b :bprevious<cr>
 
 " switch quickfix
-nmap ]q :cnext<cr>
-nmap [q :cprevious<cr>
+nnoremap ]q :cnext<cr>
+nnoremap [q :cprevious<cr>
 
 " make Y consistent with C and D
 nnoremap Y y$
