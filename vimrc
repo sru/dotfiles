@@ -12,8 +12,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
   Plug 'kana/vim-operator-user' | Plug 'rhysd/vim-operator-surround'
 
   " text objects
-  Plug 'wellle/targets.vim'
-  Plug 'michaeljsmith/vim-indent-object'
   Plug 'coderifous/textobj-word-column.vim'
 
   " language
