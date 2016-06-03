@@ -89,7 +89,6 @@ endfunction
 " plugin settings
 
 " vim-operator-surround
-let g:operator#surround#ignore_space = 0
 let g:operator#surround#no_default_blocks = 1
 let g:operator#surround#blocks = {
 \   '-': [
