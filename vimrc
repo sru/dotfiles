@@ -164,7 +164,7 @@ set ruler
 
 " display eol, tabs, and trailing spaces
 set list
-set listchars=tab:>-,eol:-,extends:>,precedes:<,trail:~
+set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:~
 
 " statusline
 " %f - tail of the filename
