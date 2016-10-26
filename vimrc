@@ -23,9 +23,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
   call plug#end()
 endif
 
-" enable built-in matchit
-runtime macros/matchit.vim
-
 if has('autocmd')
   filetype plugin indent on
 endif
