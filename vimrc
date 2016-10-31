@@ -343,6 +343,9 @@ endif
 " keep viminfo file inside
 let &viminfo = '''50,<100,s10,h,n' . $VIMHOME . '/viminfo'
 
+" it is useful, but for various security reasons...
+set nomodeline
+
 " key bindings
 
 " no highlight
