@@ -161,7 +161,7 @@ set ruler
 
 " display eol, tabs, and trailing spaces
 set list
-set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:~
+set listchars=tab:>-,trail:-
 
 " statusline
 " %f - tail of the filename
@@ -190,7 +190,12 @@ set autoindent
 
 " text width for formatting
 set textwidth=80
-set colorcolumn=+1
+if exists('&colorcolumn')
+  set colorcolumn=+1,+2,+3
+
+  " more standing out color
+  highlight! link ColorColumn Error
+endif
 
 " scrolling
 set scrolloff=3
@@ -315,8 +320,8 @@ if has('autocmd')
   " when saving, strip trailing white spaces
   augroup trailing
     autocmd!
-    autocmd InsertEnter * setlocal listchars-=trail:~
-    autocmd InsertLeave * setlocal listchars+=trail:~
+    autocmd InsertEnter * setlocal listchars-=trail:-
+    autocmd InsertLeave * setlocal listchars+=trail:-
     autocmd BufWritePre * call <SID>StripTrailingWhite()
   augroup END
 
