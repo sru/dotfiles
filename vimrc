@@ -193,8 +193,7 @@ set textwidth=80
 if exists('&colorcolumn')
   set colorcolumn=+1,+2,+3
 
-  " more standing out color
-  highlight! link ColorColumn Error
+  highlight ColorColumn ctermbg=1 guibg=#A54242
 endif
 
 " scrolling
@@ -333,15 +332,6 @@ if has('autocmd')
     else
       autocmd FileType * setlocal formatoptions=croqnl
     endif
-  augroup END
-
-  " colorscheme changes
-  " shamelessly copied statusline from Apprentice colorscheme at
-  " https://github.com/romainl/Apprentice
-  augroup colorschemechanges
-    autocmd!
-    autocmd BufWinEnter * hi StatusLine cterm=NONE ctermbg=101 ctermfg=235
-                                      \ gui=NONE guibg=#87875f guifg=#262626
   augroup END
 endif
 
