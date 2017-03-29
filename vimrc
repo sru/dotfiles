@@ -83,6 +83,16 @@ function! s:StripTrailingWhite()
   call winrestview(l:winview)
 endfunction
 
+function! s:JoinAbove(lines)
+  if line(".") == 1
+    return
+  endif
+  normal ix
+  normal x
+  let l:lines = (a:lines > 1) ? a:lines - 1 : 1
+  execute ':-' . l:lines . ',.join'
+endfunction
+
 " plugin settings
 
 " vim-operator-surround
@@ -159,7 +169,7 @@ set showcmd
 " show row and column of cursor
 set ruler
 
-" display eol, tabs, and trailing spaces
+" display tabs and trailing spaces
 set list
 set listchars=tab:>-,trail:-
 
@@ -269,25 +279,6 @@ if has('extra_search')
   set incsearch " find the next match as typing the search
 endif
 
-" cindent
-if has('cindent')
-
-  " cindent options
-  set cindent
-  set cinoptions=c1,(s,m1,g0,l1
-
-  " somehow indentkeys is different from cinkeys
-  set indentkeys+=0)
-
-  if has('autocmd')
-    augroup cindent_overrides
-      autocmd!
-      autocmd FileType * setlocal cinoptions=c1,(s,m1,g0,l1
-      autocmd FileType * setlocal indentkeys+=0)
-    augroup END
-  endif
-endif
-
 " single line comment
 if has('comments') && has('autocmd')
 
@@ -361,6 +352,9 @@ nnoremap [q :cprevious<cr>
 
 " make Y consistent with C and D
 nnoremap Y y$
+
+" K joins line above, just like J
+nnoremap K :<C-U>call <SID>JoinAbove(v:count1)<cr>
 
 " set indent width
 nnoremap <silent> <leader>i :call <SID>SetIndentWidth()<cr>
