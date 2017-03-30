@@ -304,6 +304,10 @@ if has('comments') && has('autocmd')
   augroup END
 endif
 
+if has('cindent')
+  set cinoptions=l1,g0,c1,(s,us,U1,m1,j1
+endif
+
 if has('autocmd')
 
   " don't show trailing in insert mode
