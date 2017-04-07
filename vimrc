@@ -11,9 +11,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
   Plug 'justinmk/vim-dirvish'
   Plug 'kana/vim-operator-user' | Plug 'rhysd/vim-operator-surround'
 
-  " text objects
-  Plug 'coderifous/textobj-word-column.vim'
-
   " language
   Plug 'sheerun/vim-polyglot'
 
@@ -182,7 +179,7 @@ set listchars=tab:>-,trail:-
 " %c - cursor column
 " %l - cursor line
 " %P - percent through file
-set statusline =\ %f\ %y%r%m%=\ %c\ %l\ %P\  " explanation above
+set statusline=\ %f\ %y%r%m%=\ %c\ %l\ %P\  " explanation above
 set laststatus=2
 
 " lots of histories
