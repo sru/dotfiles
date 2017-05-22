@@ -20,17 +20,13 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
   call plug#end()
 endif
 
-if has('autocmd')
-  filetype plugin indent on
-endif
+filetype plugin indent on
 
 " fail without annoying the user
 silent! colorscheme hybrid
 
-if has('syntax') && !exists('g:syntax_on')
-  " syntax highlighting
-  syntax on
-endif
+" syntax highlighting
+syntax on
 
 " functions
 
@@ -51,23 +47,26 @@ function! s:EnsureDirExists(dir, ...)
   endif
 endfunction
 
-function! s:SetIndentWidth()
-  let l:et = nr2char(getchar())
-  let l:width = nr2char(getchar())
+function! s:SetIndentWidth(opts)
+  let l:et = a:opts[0]
+  let l:width = str2nr(a:opts[1:])
   if !l:width
-    echoerr "Number expected"
+    echoerr 'Number expected'
     return
   endif
   if l:et ==? 't'
     setlocal noexpandtab
     let &l:shiftwidth = l:width
-    let &l:softtabstop = 0 " default softtabstop is 0
+    setlocal softtabstop&
     let &l:tabstop = l:width
   elseif l:et ==? 's'
     setlocal expandtab
     let &l:shiftwidth = l:width
     let &l:softtabstop = l:width
-    let &l:tabstop = 8 " default tabstop is 8
+    setlocal tabstop&
+  else
+    echoerr 'Invalid first character: t or s expected'
+    return
   endif
 endfunction
 
@@ -88,6 +87,23 @@ function! s:JoinAbove(lines)
   normal x
   let l:lines = (a:lines > 1) ? a:lines - 1 : 1
   execute ':-' . l:lines . ',.join'
+endfunction
+
+" single line comment
+function! s:SingleLineComment()
+  for l:c in split(&l:comments, ',')
+    if l:c =~ '^:'
+
+      " vimscript being ridiculous
+      if l:c == ':"'
+        execute 'set comments-=:\"'
+        execute 'set comments+=f:\"'
+      else
+        execute 'set comments-=' . l:c
+        execute 'set comments+=f' . l:c
+      endif
+    endif
+  endfor
 endfunction
 
 " plugin settings
@@ -197,11 +213,6 @@ set autoindent
 
 " text width for formatting
 set textwidth=80
-if exists('&colorcolumn')
-  set colorcolumn=+1,+2,+3
-
-  highlight ColorColumn ctermbg=1 guibg=#A54242
-endif
 
 " scrolling
 set scrolloff=3
@@ -271,61 +282,35 @@ if has('mksession')
 endif
 
 " search
-if has('extra_search')
-  set hlsearch  " highlight searches
-  set incsearch " find the next match as typing the search
-endif
-
-" single line comment
-if has('comments') && has('autocmd')
-
-  function! s:SingleLineComment()
-    for l:c in split(&l:comments, ',')
-      if l:c =~ '^:'
-
-        " vimscript being ridiculous
-        if l:c == ':"'
-          execute 'set comments-=:\"'
-          execute 'set comments+=f:\"'
-        else
-          execute 'set comments-=' . l:c
-          execute 'set comments+=f' . l:c
-        endif
-      endif
-    endfor
-  endfunction
-
-  augroup singlelinecomment
-    autocmd!
-    autocmd FileType * call <SID>SingleLineComment()
-  augroup END
-endif
+set incsearch " find the next match as typing the search
 
 if has('cindent')
   set cinoptions=l1,g0,c1,(s,us,U1,m1,j1
 endif
 
-if has('autocmd')
+" don't show trailing in insert mode
+" when saving, strip trailing white spaces
+augroup trailing
+  autocmd!
+  autocmd InsertEnter * setlocal listchars-=trail:-
+  autocmd InsertLeave * setlocal listchars+=trail:-
+  autocmd BufWritePre * call <SID>StripTrailingWhite()
+augroup END
 
-  " don't show trailing in insert mode
-  " when saving, strip trailing white spaces
-  augroup trailing
-    autocmd!
-    autocmd InsertEnter * setlocal listchars-=trail:-
-    autocmd InsertLeave * setlocal listchars+=trail:-
-    autocmd BufWritePre * call <SID>StripTrailingWhite()
-  augroup END
+" annoying ftplugins
+augroup ftoverrides
+  autocmd!
+  if v:version > 703 || v:version == 703 && has('patch541')
+    autocmd FileType * setlocal formatoptions=croqnlj
+  else
+    autocmd FileType * setlocal formatoptions=croqnl
+  endif
+augroup END
 
-  " annoying ftplugins
-  augroup ftoverrides
-    autocmd!
-    if v:version > 703 || v:version == 703 && has('patch541')
-      autocmd FileType * setlocal formatoptions=croqnlj
-    else
-      autocmd FileType * setlocal formatoptions=croqnl
-    endif
-  augroup END
-endif
+augroup singlelinecomment
+  autocmd!
+  autocmd FileType * call <SID>SingleLineComment()
+augroup END
 
 " keep viminfo file inside
 let &viminfo = '''50,<100,s10,h,n' . $VIMHOME . '/viminfo'
@@ -334,9 +319,6 @@ let &viminfo = '''50,<100,s10,h,n' . $VIMHOME . '/viminfo'
 set nomodeline
 
 " key bindings
-
-" no highlight
-noremap <silent> <leader>/ :nohlsearch<cr>
 
 " make j and k move display lines, not actual lines
 nnoremap j gj
@@ -357,9 +339,6 @@ nnoremap Y y$
 " K joins line above, just like J
 nnoremap K :<C-U>call <SID>JoinAbove(v:count1)<cr>
 
-" set indent width
-nnoremap <silent> <leader>i :call <SID>SetIndentWidth()<cr>
-
 " operator surround
 nmap <silent>sa <Plug>(operator-surround-append)
 nmap <silent>sd <Plug>(operator-surround-delete)
@@ -367,3 +346,7 @@ nmap <silent>sr <Plug>(operator-surround-replace)
 vmap <silent>sa <Plug>(operator-surround-append)
 vmap <silent>sd <Plug>(operator-surround-delete)
 vmap <silent>sr <Plug>(operator-surround-replace)
+
+" commands
+
+command! -nargs=1 I call <SID>SetIndentWidth('<args>')
