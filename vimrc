@@ -69,6 +69,22 @@ function! s:strip_trailing_white()
   call winrestview(l:winview)
 endfunction
 
+function! s:single_line_comment()
+  for l:c in split(&l:comments, ',')
+    if l:c =~ '^:'
+
+      " vimscript being ridiculous
+      if l:c == ':"'
+        execute 'set comments-=:\"'
+        execute 'set comments+=f:\"'
+      else
+        execute 'set comments-=' . l:c
+        execute 'set comments+=f' . l:c
+      endif
+    endif
+  endfor
+endfunction
+
 " plugin settings
 
 " vim-operator-surround
@@ -249,6 +265,8 @@ if v:version > 703 || v:version == 703 && has('patch541')
 else
   autocmd vimrc FileType * setlocal formatoptions=croqnl
 endif
+
+autocmd vimrc FileType * call <SID>single_line_comment()
 
 " keep viminfo file inside
 let &viminfo = '''50,<100,s10,h,n' . s:vim_dir . '/viminfo'
