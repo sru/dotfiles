@@ -1,9 +1,18 @@
-" get $VIMHOME variable
-call var#vars()
+" for no duplicate autocmds
+augroup vimrc
+  autocmd!
+augroup END
+
+" get the vim directory
+if has('win32')
+  let s:vim_dir = $HOME . '/vimfiles'
+else
+  let s:vim_dir = $HOME . '/.vim'
+endif
 
 " check if vim-plug exists
 if !empty(globpath(&rtp, 'autoload/plug.vim'))
-  call plug#begin($VIMHOME . '/plugged')
+  call plug#begin(s:vim_dir . '/plugged')
 
   " functionality
   Plug 'tommcdo/vim-lion'
@@ -22,32 +31,13 @@ endif
 
 filetype plugin indent on
 
-" fail without annoying the user
 silent! colorscheme hybrid
 
-" syntax highlighting
 syntax on
 
 " functions
 
-function! s:EnsureDirExists(dir, ...)
-  let l:dir = expand(a:dir)
-  if !isdirectory(l:dir)
-    if !empty(glob(l:dir))
-      echo l:dir . ' is already being used.'
-    elseif exists('*mkdir')
-      if a:0 >= 2
-        call mkdir(l:dir, 'p', a:2)
-      else
-        call mkdir(l:dir, 'p')
-      endif
-    else
-      echo 'Please create directory: ' . l:dir
-    endif
-  endif
-endfunction
-
-function! s:SetIndentWidth(opts)
+function! s:set_indent_width(opts)
   let l:et = a:opts[0]
   let l:width = str2nr(a:opts[1:])
   if !l:width
@@ -70,40 +60,13 @@ function! s:SetIndentWidth(opts)
   endif
 endfunction
 
-function! s:StripTrailingWhite()
+function! s:strip_trailing_white()
   if &l:binary
     return
   endif
   let l:winview = winsaveview()
   silent! %s/\s\+$//
   call winrestview(l:winview)
-endfunction
-
-function! s:JoinAbove(lines)
-  if line(".") == 1
-    return
-  endif
-  normal ix
-  normal x
-  let l:lines = (a:lines > 1) ? a:lines - 1 : 1
-  execute ':-' . l:lines . ',.join'
-endfunction
-
-" single line comment
-function! s:SingleLineComment()
-  for l:c in split(&l:comments, ',')
-    if l:c =~ '^:'
-
-      " vimscript being ridiculous
-      if l:c == ':"'
-        execute 'set comments-=:\"'
-        execute 'set comments+=f:\"'
-      else
-        execute 'set comments-=' . l:c
-        execute 'set comments+=f' . l:c
-      endif
-    endif
-  endfor
 endfunction
 
 " plugin settings
@@ -115,27 +78,27 @@ let g:operator#surround#blocks = {
 \     {
 \       'block': ['( ', ' )'],
 \       'motionwise': ['char', 'line', 'block'],
-\       'keys': [' (', ' )'],
+\       'keys': ['('],
 \     },
 \     {
 \       'block': ['{ ', ' }'],
 \       'motionwise': ['char', 'line', 'block'],
-\       'keys': [' {', ' }'],
+\       'keys': ['{'],
 \     },
 \     {
 \       'block': ['(', ')'],
 \       'motionwise': ['char', 'line', 'block'],
-\       'keys': ['(', ')'],
+\       'keys': [')'],
 \     },
 \     {
 \       'block': ['[', ']'],
 \       'motionwise': ['char', 'line', 'block'],
-\       'keys': ['[', ']'],
+\       'keys': [']'],
 \     },
 \     {
 \       'block': ['{', '}'],
 \       'motionwise': ['char', 'line', 'block'],
-\       'keys': ['{', '}'],
+\       'keys': ['}'],
 \     },
 \     {
 \       'block': ['<', '>'],
@@ -179,9 +142,6 @@ set showmode
 " show incomplete cmds
 set showcmd
 
-" show row and column of cursor
-set ruler
-
 " display tabs and trailing spaces
 set list
 set listchars=tab:>-,trail:-
@@ -218,10 +178,11 @@ set textwidth=80
 set scrolloff=3
 
 " tab completion wild options
-set wildmode=list:longest
 set wildmenu
+set wildmode=list:longest
 
 " search
+set incsearch " find the next match as typing the search
 set ignorecase " ignore case
 set smartcase  " don't ignore case when capital letter is typed
 
@@ -253,8 +214,7 @@ set noconfirm
 set shortmess=atI
 
 " yes swap files
-call <SID>EnsureDirExists(expand($VIMHOME . '/swap'))
-let &directory = $VIMHOME . '/swap//,.'
+let &directory = s:vim_dir . '/swap//,' . &directory
 set swapfile
 
 " when file is changed outside of vim, read it again
@@ -268,21 +228,10 @@ set completeopt=menu,menuone,longest
 
 " undo settings
 if has('persistent_undo')
-  call <SID>EnsureDirExists($VIMHOME . '/undo')
-  let &undodir = $VIMHOME . '/undo'
+  let &undodir = s:vim_dir . '/undo,' . &undodir
   set undofile
   set undolevels=3000
 endif
-
-" persistent folds and cursor
-if has('mksession')
-  call <SID>EnsureDirExists($VIMHOME . '/view')
-  let &viewdir = $VIMHOME . '/view'
-  set viewoptions=cursor,folds,slash,unix
-endif
-
-" search
-set incsearch " find the next match as typing the search
 
 if has('cindent')
   set cinoptions=l1,g0,c1,(s,us,U1,m1,j1
@@ -290,33 +239,25 @@ endif
 
 " don't show trailing in insert mode
 " when saving, strip trailing white spaces
-augroup trailing
-  autocmd!
-  autocmd InsertEnter * setlocal listchars-=trail:-
-  autocmd InsertLeave * setlocal listchars+=trail:-
-  autocmd BufWritePre * call <SID>StripTrailingWhite()
-augroup END
+autocmd vimrc InsertEnter * setlocal listchars-=trail:-
+autocmd vimrc InsertLeave * setlocal listchars+=trail:-
+autocmd vimrc BufWritePre * call <SID>strip_trailing_white()
 
 " annoying ftplugins
-augroup ftoverrides
-  autocmd!
-  if v:version > 703 || v:version == 703 && has('patch541')
-    autocmd FileType * setlocal formatoptions=croqnlj
-  else
-    autocmd FileType * setlocal formatoptions=croqnl
-  endif
-augroup END
-
-augroup singlelinecomment
-  autocmd!
-  autocmd FileType * call <SID>SingleLineComment()
-augroup END
+if v:version > 703 || v:version == 703 && has('patch541')
+  autocmd vimrc FileType * setlocal formatoptions=croqnlj
+else
+  autocmd vimrc FileType * setlocal formatoptions=croqnl
+endif
 
 " keep viminfo file inside
-let &viminfo = '''50,<100,s10,h,n' . $VIMHOME . '/viminfo'
+let &viminfo = '''50,<100,s10,h,n' . s:vim_dir . '/viminfo'
 
 " it is useful, but for various security reasons...
 set nomodeline
+
+" for faster macros
+set lazyredraw
 
 " key bindings
 
@@ -336,9 +277,6 @@ nnoremap [q :cprevious<cr>
 " make Y consistent with C and D
 nnoremap Y y$
 
-" K joins line above, just like J
-nnoremap K :<C-U>call <SID>JoinAbove(v:count1)<cr>
-
 " operator surround
 nmap <silent>sa <Plug>(operator-surround-append)
 nmap <silent>sd <Plug>(operator-surround-delete)
@@ -349,4 +287,4 @@ vmap <silent>sr <Plug>(operator-surround-replace)
 
 " commands
 
-command! -nargs=1 I call <SID>SetIndentWidth('<args>')
+command! -nargs=1 I call <SID>set_indent_width('<args>')

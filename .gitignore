@@ -1,8 +1,5 @@
 *~
 *.swp
 plugged/*
-undo/*
-view/*
-swap/*
 .netrwhist
 viminfo
