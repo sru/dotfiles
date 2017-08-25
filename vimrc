@@ -31,9 +31,11 @@ endif
 
 filetype plugin indent on
 
-silent! colorscheme hybrid
+colorscheme mico
 
-syntax on
+if !exists('g:syntax_on')
+  syntax enable
+endif
 
 " functions
 
@@ -142,9 +144,6 @@ let g:operator#surround#blocks = {
 " settings
 
 let mapleader = "\<Space>"
-
-" background
-set background=dark
 
 " allow use backspace everything in insert mode
 set backspace=indent,eol,start
