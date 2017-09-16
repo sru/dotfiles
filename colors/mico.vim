@@ -26,8 +26,8 @@ if (has('gui_running') || &t_Co == 256 || exists('+termguicolors') && &termguico
   highlight FoldColumn   term=NONE      cterm=NONE      gui=NONE      ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    guisp=NONE
   highlight Folded       term=NONE      cterm=NONE      gui=NONE      ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    guisp=NONE
 
-  highlight Cursor       term=NONE      cterm=NONE      gui=NONE      ctermfg=234  ctermbg=251  guifg=#1c1c1c guifg=#c6c6c6 guisp=NONE
-  highlight CursorIM     term=NONE      cterm=NONE      gui=NONE      ctermfg=234  ctermbg=251  guifg=#1c1c1c guifg=#c6c6c6 guisp=NONE
+  highlight Cursor       term=NONE      cterm=NONE      gui=NONE      ctermfg=234  ctermbg=251  guifg=#1c1c1c guibg=#c6c6c6 guisp=NONE
+  highlight CursorIM     term=NONE      cterm=NONE      gui=NONE      ctermfg=234  ctermbg=251  guifg=#1c1c1c guibg=#c6c6c6 guisp=NONE
 
   highlight ColorColumn  term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=237  guifg=NONE    guibg=#3a3a3a guisp=NONE
   highlight CursorColumn term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=237  guifg=NONE    guibg=#3a3a3a guisp=NONE
@@ -105,8 +105,8 @@ else
   highlight FoldColumn   term=NONE      cterm=NONE      gui=NONE      ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    guisp=NONE
   highlight Folded       term=NONE      cterm=NONE      gui=NONE      ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    guisp=NONE
 
-  highlight Cursor       term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=#1c1c1c guifg=#c6c6c6 guisp=NONE
-  highlight CursorIM     term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=#1c1c1c guifg=#c6c6c6 guisp=NONE
+  highlight Cursor       term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=#1c1c1c guibg=#c6c6c6 guisp=NONE
+  highlight CursorIM     term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=#1c1c1c guibg=#c6c6c6 guisp=NONE
 
   highlight ColorColumn  term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=0    guifg=NONE    guibg=#3a3a3a guisp=NONE
   highlight CursorColumn term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=0    guifg=NONE    guibg=#3a3a3a guisp=NONE
