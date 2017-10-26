@@ -51,12 +51,12 @@ if (has('gui_running') || &t_Co == 256 || exists('+termguicolors') && &termguico
   highlight Type         term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight Underlined   term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight Scrollbar    term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
-  highlight Special      term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight Statement    term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight VisualNOS    term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
 
   highlight Constant     term=NONE      cterm=NONE      gui=NONE      ctermfg=167  ctermbg=NONE guifg=#d75f5f guibg=NONE    guisp=NONE
   highlight ErrorMsg     term=NONE      cterm=NONE      gui=NONE      ctermfg=167  ctermbg=NONE guifg=#d75f5f guibg=NONE    guisp=NONE
+  highlight Special      term=NONE      cterm=NONE      gui=NONE      ctermfg=167  ctermbg=NONE guifg=#d75f5f guibg=NONE    guisp=NONE
   highlight WarningMsg   term=NONE      cterm=NONE      gui=NONE      ctermfg=167  ctermbg=NONE guifg=#d75f5f guibg=NONE    guisp=NONE
 
   highlight Error        term=NONE      cterm=NONE      gui=NONE      ctermfg=234  ctermbg=167  guifg=NONE    guibg=#d75f5f guisp=NONE

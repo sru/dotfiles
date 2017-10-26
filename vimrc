@@ -151,6 +151,9 @@ set backspace=indent,eol,start
 " don't show line numbers
 set nonumber
 
+" don't flicker cursor to show matches
+set noshowmatch
+
 " show current mode
 set showmode
 
@@ -177,7 +180,7 @@ set laststatus=2
 set history=100
 
 " file format
-set fileformat=unix
+set fileformats=unix,dos
 set encoding=utf-8
 
 " default indent settings
