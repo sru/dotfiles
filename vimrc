@@ -67,7 +67,13 @@ function! s:strip_trailing_white()
     return
   endif
   let l:winview = winsaveview()
-  silent! %s/\s\+$//
+  if v:version > 704 || v:version == 704 && has('patch155')
+    silent! keeppatterns %s/\s\+$//
+  else
+    silent! %s/\s\+$//
+    call histdel('/', -1)
+    let @/ = histget('search', -1)
+  endif
   call winrestview(l:winview)
 endfunction
 
@@ -268,7 +274,7 @@ else
   autocmd vimrc FileType * setlocal formatoptions=croqnl
 endif
 
-autocmd vimrc FileType * call <SID>single_line_comment()
+" autocmd vimrc FileType * call <SID>single_line_comment()
 
 " keep viminfo file inside
 let &viminfo = '''50,<100,s10,h,n' . s:vim_dir . '/viminfo'
