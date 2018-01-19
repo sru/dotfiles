@@ -77,22 +77,6 @@ function! s:strip_trailing_white()
   call winrestview(l:winview)
 endfunction
 
-function! s:single_line_comment()
-  for l:c in split(&l:comments, ',')
-    if l:c =~ '^:'
-
-      " vimscript being ridiculous
-      if l:c == ':"'
-        execute 'set comments-=:\"'
-        execute 'set comments+=f:\"'
-      else
-        execute 'set comments-=' . l:c
-        execute 'set comments+=f' . l:c
-      endif
-    endif
-  endfor
-endfunction
-
 " plugin settings
 
 " vim-operator-surround
@@ -149,8 +133,6 @@ let g:operator#surround#blocks = {
 
 " settings
 
-let mapleader = "\<Space>"
-
 " allow use backspace everything in insert mode
 set backspace=indent,eol,start
 
@@ -206,7 +188,8 @@ set wildmenu
 set wildmode=list:longest
 
 " search
-set incsearch " find the next match as typing the search
+set nohlsearch " It's my Vim; I do as I please.
+set incsearch  " find the next match as typing the search
 set ignorecase " ignore case
 set smartcase  " don't ignore case when capital letter is typed
 
@@ -274,8 +257,6 @@ else
   autocmd vimrc FileType * setlocal formatoptions=croqnl
 endif
 
-" autocmd vimrc FileType * call <SID>single_line_comment()
-
 " keep viminfo file inside
 let &viminfo = '''50,<100,s10,h,n' . s:vim_dir . '/viminfo'
 
@@ -285,6 +266,9 @@ set nomodeline
 " for faster macros
 set lazyredraw
 
+" No accidental beepings.
+set visualbell
+
 " key bindings
 
 " make j and k move display lines, not actual lines
@@ -292,7 +276,6 @@ nnoremap j gj
 nnoremap k gk
 
 " switch buffers
-nnoremap <leader>b :buffers<cr>:buffer<space>
 nnoremap ]b :bnext<cr>
 nnoremap [b :bprevious<cr>
 

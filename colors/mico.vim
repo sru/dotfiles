@@ -39,6 +39,7 @@ if (has('gui_running') || &t_Co == 256 || exists('+termguicolors') && &termguico
   highlight SignColumn   term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=234  guifg=NONE    guibg=#1c1c1c guisp=NONE
 
   highlight Conceal      term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
+  highlight Function     term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight Identifier   term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight Ignore       term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight Menu         term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
@@ -64,7 +65,6 @@ if (has('gui_running') || &t_Co == 256 || exists('+termguicolors') && &termguico
   highlight String       term=NONE      cterm=NONE      gui=NONE      ctermfg=143  ctermbg=NONE guifg=#afaf5f guibg=NONE    guisp=NONE
 
   highlight CursorLineNr term=NONE      cterm=NONE      gui=NONE      ctermfg=221  ctermbg=NONE guifg=#ffd75f guibg=NONE    guisp=NONE
-  highlight Function     term=NONE      cterm=NONE      gui=NONE      ctermfg=221  ctermbg=NONE guifg=#ffd75f guibg=NONE    guisp=NONE
   highlight Title        term=NONE      cterm=NONE      gui=NONE      ctermfg=221  ctermbg=NONE guifg=#ffd75f guibg=NONE    guisp=NONE
   highlight Todo         term=NONE      cterm=NONE      gui=NONE      ctermfg=221  ctermbg=NONE guifg=#ffd75f guibg=NONE    guisp=NONE
 
@@ -118,6 +118,7 @@ else
   highlight SignColumn   term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=#1c1c1c guisp=NONE
 
   highlight Conceal      term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
+  highlight Function     term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight Identifier   term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight Ignore       term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
   highlight Menu         term=NONE      cterm=NONE      gui=NONE      ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE    guisp=NONE
@@ -143,7 +144,6 @@ else
   highlight String       term=NONE      cterm=NONE      gui=NONE      ctermfg=2    ctermbg=NONE guifg=#afaf5f guibg=NONE    guisp=NONE
 
   highlight CursorLineNr term=NONE      cterm=NONE      gui=NONE      ctermfg=11   ctermbg=NONE guifg=#ffd75f guibg=NONE    guisp=NONE
-  highlight Function     term=NONE      cterm=NONE      gui=NONE      ctermfg=11   ctermbg=NONE guifg=#ffd75f guibg=NONE    guisp=NONE
   highlight Title        term=NONE      cterm=NONE      gui=NONE      ctermfg=11   ctermbg=NONE guifg=#ffd75f guibg=NONE    guisp=NONE
   highlight Todo         term=NONE      cterm=NONE      gui=NONE      ctermfg=11   ctermbg=NONE guifg=#ffd75f guibg=NONE    guisp=NONE
 
