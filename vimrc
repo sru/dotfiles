@@ -1,30 +1,24 @@
-" for no duplicate autocmds
+" Declare autocmd group and remove all existing autcmds for the group.
 augroup vimrc
   autocmd!
 augroup END
 
-" get the vim directory
+" The vim directory.
 if has('win32')
   let s:vim_dir = $HOME . '/vimfiles'
 else
   let s:vim_dir = $HOME . '/.vim'
 endif
 
-" check if vim-plug exists
+" Check if vim-plug exists.
 if !empty(globpath(&rtp, 'autoload/plug.vim'))
-  call plug#begin(s:vim_dir . '/plugged')
+  " Suppress error about git not found.
+  silent! call plug#begin(s:vim_dir . '/plugged')
 
-  " functionality
   Plug 'tommcdo/vim-lion'
   Plug 'tpope/vim-commentary'
   Plug 'justinmk/vim-dirvish'
   Plug 'kana/vim-operator-user' | Plug 'rhysd/vim-operator-surround'
-
-  " language
-  Plug 'sheerun/vim-polyglot'
-
-  " Colorscheme
-  Plug 'w0ng/vim-hybrid'
 
   call plug#end()
 endif
@@ -36,8 +30,6 @@ colorscheme mico
 if !exists('g:syntax_on')
   syntax enable
 endif
-
-" functions
 
 function! s:set_indent_width(opts)
   let l:et = a:opts[0]
@@ -77,9 +69,8 @@ function! s:strip_trailing_white()
   call winrestview(l:winview)
 endfunction
 
-" plugin settings
-
 " vim-operator-surround
+" Change the default block so that the pairs with spaces are detected first.
 let g:operator#surround#no_default_blocks = 1
 let g:operator#surround#blocks = {
 \   '-': [
@@ -131,169 +122,147 @@ let g:operator#surround#blocks = {
 \   ],
 \ }
 
-" settings
+" vim-dirvish
+let g:dirvish_relative_paths = 1
 
-" allow use backspace everything in insert mode
+" Allow using backspace for everything in insert mode.
 set backspace=indent,eol,start
 
-" don't show line numbers
+" Don't show line numbers.
 set nonumber
 
-" don't flicker cursor to show matches
+" Don't flicker cursor to show matches.
 set noshowmatch
 
-" show current mode
+" Show current mode.
 set showmode
 
-" show incomplete cmds
+" Show incomplete cmds.
 set showcmd
 
-" display tabs and trailing spaces
+" Display tabs and trailing spaces.
 set list
 set listchars=tab:>-,trail:-
 
-" statusline
-" %f - tail of the filename
-" %y - filetype
-" %r - readonly flag
-" %m - modifier flag
-" %= - left/right separator
-" %c - cursor column
-" %l - cursor line
-" %P - percent through file
-set statusline=\ %f\ %y%r%m%=\ %c\ %l\ %P\  " explanation above
+set statusline=\ %f\ %y%m%r%=%l\ %3.c\  " :help 'statusline'
 set laststatus=2
 
-" lots of histories
+" Lots of histories.
 set history=100
 
-" file format
+" File formats.
 set fileformats=unix,dos
 set encoding=utf-8
 
-" default indent settings
+" Default indent settings.
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set autoindent
 
-" text width for formatting
+" Text width for formatting.
 set textwidth=80
 
-" scrolling
-set scrolloff=3
-
-" tab completion wild options
+" Tab completion wild options.
 set wildmenu
 set wildmode=list:longest
 
-" search
-set nohlsearch " It's my Vim; I do as I please.
-set incsearch  " find the next match as typing the search
-set ignorecase " ignore case
-set smartcase  " don't ignore case when capital letter is typed
+" Search.
+set nohlsearch
+set incsearch  " Find the next match as typing the search.
+set ignorecase " Ignore case.
+set smartcase  " Don't ignore case when capital letter is typed.
 
-" c = auto-wrap comments
-" r = insert current comment leader when pressing enter in Insert mode
-" o = insert current comment leader when o or O is pressed in Normal mode
-" q = format comments with gq
-" n = numbered list indent
-" l = long lines are not broken in insert mode
-" j = remove comment leader when joining
+" c: Auto-wrap comments.
+" r: Insert current comment leader when pressing enter in Insert mode.
+" o: Insert current comment leader when o or O is pressed in Normal mode.
+" q: Format comments with gq.
+" n: Numbered list indent.
+" l: Long lines are not broken in insert mode.
+" j: Remove comment leader when joining.
 set formatoptions=croqnl
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j
 endif
 
-" Only one space after sentence
+" Only one space after sentence.
 set nojoinspaces
 
-" hide buffers when not displayed
+" Hide buffers when not displayed.
 set hidden
 
-" fail instead of asking dialog
+" Fail instead of asking dialog.
 set noconfirm
 
-" abbreviate messages
-" a = shorten bunch of stuff, see :h shortmess
-" t = truncate file message if it's too long
-" I = skip intro message
+" Abbreviate messages.
+" a: Shorten bunch of stuff, see :h shortmess.
+" t: Truncate file message if it's too long.
+" I: Skip intro message.
 set shortmess=atI
 
-" yes swap files
-let &directory = s:vim_dir . '/swap//,' . &directory
-set swapfile
-
-" when file is changed outside of vim, read it again
+" When file is changed outside of vim, read it again.
 set autoread
 
-" do not search included files
+" Do not search included files; use i_CTRL-X_CTRL-I.
 set complete-=i
 
-" better option for complete popup
+" Option for complete popup.
 set completeopt=menu,menuone,longest
 
-" undo settings
+" Persistent undo.
 if has('persistent_undo')
-  let &undodir = s:vim_dir . '/undo,' . &undodir
   set undofile
-  set undolevels=3000
+  set undolevels=1000
 endif
 
 if has('cindent')
   set cinoptions=l1,g0,c1,(s,us,U1,m1,j1
 endif
 
-" don't show trailing in insert mode
-" when saving, strip trailing white spaces
+" It is useful, but for various security reasons...
+set nomodeline
+
+" For faster macros; Use CTRL-L to force redraw.
+set lazyredraw
+
+" No accidental beepings.
+set visualbell
+
+" Don't show trailing in insert mode.
 autocmd vimrc InsertEnter * setlocal listchars-=trail:-
 autocmd vimrc InsertLeave * setlocal listchars+=trail:-
+
+" When saving, strip trailing white spaces.
 autocmd vimrc BufWritePre * call <SID>strip_trailing_white()
 
-" annoying ftplugins
+" Annoying ftplugins.
 if v:version > 703 || v:version == 703 && has('patch541')
   autocmd vimrc FileType * setlocal formatoptions=croqnlj
 else
   autocmd vimrc FileType * setlocal formatoptions=croqnl
 endif
 
-" keep viminfo file inside
-let &viminfo = '''50,<100,s10,h,n' . s:vim_dir . '/viminfo'
+" Make j and k move display lines only when count is not given.
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 
-" it is useful, but for various security reasons...
-set nomodeline
-
-" for faster macros
-set lazyredraw
-
-" No accidental beepings.
-set visualbell
-
-" key bindings
-
-" make j and k move display lines, not actual lines
-nnoremap j gj
-nnoremap k gk
-
-" switch buffers
-nnoremap ]b :bnext<cr>
+" Previous and next buffers.
 nnoremap [b :bprevious<cr>
+nnoremap ]b :bnext<cr>
 
-" switch quickfix
-nnoremap ]q :cnext<cr>
+" Previous and next quickfix.
 nnoremap [q :cprevious<cr>
+nnoremap ]q :cnext<cr>
 
-" make Y consistent with C and D
+" Make Y consistent with C and D.
 nnoremap Y y$
 
-" operator surround
-nmap <silent>sa <Plug>(operator-surround-append)
-nmap <silent>sd <Plug>(operator-surround-delete)
-nmap <silent>sr <Plug>(operator-surround-replace)
-vmap <silent>sa <Plug>(operator-surround-append)
-vmap <silent>sd <Plug>(operator-surround-delete)
-vmap <silent>sr <Plug>(operator-surround-replace)
-
-" commands
+" vim-operator-surround
+nmap <silent> sa <Plug>(operator-surround-append)
+nmap <silent> sd <Plug>(operator-surround-delete)
+nmap <silent> sr <Plug>(operator-surround-replace)
+xmap <silent> sa <Plug>(operator-surround-append)
+xmap <silent> sd <Plug>(operator-surround-delete)
+xmap <silent> sr <Plug>(operator-surround-replace)
 
 command! -nargs=1 I call <SID>set_indent_width('<args>')
