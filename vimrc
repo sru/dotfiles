@@ -211,7 +211,6 @@ set completeopt=menu,menuone,longest
 
 " Persistent undo.
 if has('persistent_undo')
-  set undofile
   set undolevels=1000
 endif
 
