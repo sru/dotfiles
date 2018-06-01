@@ -137,6 +137,9 @@ set noshowmatch
 " Show current mode.
 set showmode
 
+" Don't show the ruler; Use CTRL-G instead.
+set noruler
+
 " Show incomplete cmds.
 set showcmd
 
@@ -144,11 +147,12 @@ set showcmd
 set list
 set listchars=tab:>-,trail:-
 
-set statusline=\ %f\ %y%m%r%=%l\ %3.c\  " :help 'statusline'
-set laststatus=2
+" Statusline.
+set statusline=%{repeat('-',winwidth(0))}
+set laststatus=0
 
 " Lots of histories.
-set history=100
+set history=10000
 
 " File formats.
 set fileformats=unix,dos
@@ -240,10 +244,6 @@ if v:version > 703 || v:version == 703 && has('patch541')
 else
   autocmd vimrc FileType * setlocal formatoptions=croqnl
 endif
-
-" Make j and k move display lines only when count is not given.
-nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Previous and next buffers.
 nnoremap [b :bprevious<cr>
