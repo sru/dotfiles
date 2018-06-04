@@ -39,12 +39,12 @@ if !get(g:, 'mico_use_term_colors') &&
 
   highlight FoldColumn   ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
   highlight Folded       ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
-  highlight LineNr       ctermfg=243  ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight NonText      ctermfg=243  ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight SpecialKey   ctermfg=243  ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight StatusLine   ctermfg=243  ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight StatusLineNC ctermfg=243  ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight VertSplit    ctermfg=243  ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
+  highlight LineNr       ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight NonText      ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight SpecialKey   ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight StatusLine   ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight StatusLineNC ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight VertSplit    ctermfg=243  ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
 
   highlight Comment      ctermfg=101  ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
 
@@ -115,12 +115,12 @@ else
 
   highlight FoldColumn   ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
   highlight Folded       ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
-  highlight LineNr       ctermfg=8    ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight NonText      ctermfg=8    ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight SpecialKey   ctermfg=8    ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight StatusLine   ctermfg=8    ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight StatusLineNC ctermfg=8    ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
-  highlight VertSplit    ctermfg=8    ctermbg=NONE guifg=#1c1c1c guibg=NONE    cterm=NONE gui=NONE
+  highlight LineNr       ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight NonText      ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight SpecialKey   ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight StatusLine   ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight StatusLineNC ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
+  highlight VertSplit    ctermfg=8    ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
 
   highlight Comment      ctermfg=2    ctermbg=NONE guifg=#767676 guibg=NONE    cterm=NONE gui=NONE
 
