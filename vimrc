@@ -6,9 +6,21 @@ augroup END
 " The vim directory.
 if has('win32')
   let s:vim_dir = $HOME . '/vimfiles'
+  if exists('$LOCALAPPDATA')
+    let s:data_dir = $LOCALAPPDATA . '/Vim'
+  else
+    let s:data_dir = s:vim_dir
+  endif
 else
   let s:vim_dir = $HOME . '/.vim'
+  if exists('$XDG_DATA_HOME')
+    let s:data_dir = $XDG_DATA_HOME . '/vim'
+  else
+    let s:data_dir = $HOME . '/.local/share/vim'
+  endif
 endif
+let s:swap_dir = s:data_dir . '/swap'
+let s:undo_dir = s:data_dir . '/undo'
 
 " Check if vim-plug exists.
 if !empty(globpath(&rtp, 'autoload/plug.vim'))
@@ -18,7 +30,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
   Plug 'tommcdo/vim-lion'
   Plug 'tpope/vim-commentary'
   Plug 'justinmk/vim-dirvish'
-  Plug 'kana/vim-operator-user' | Plug 'rhysd/vim-operator-surround'
+  Plug 'machakann/vim-sandwich'
 
   call plug#end()
 endif
@@ -69,58 +81,11 @@ function! s:strip_trailing_white()
   call winrestview(l:winview)
 endfunction
 
-" vim-operator-surround
-" Change the default block so that the pairs with spaces are detected first.
-let g:operator#surround#no_default_blocks = 1
-let g:operator#surround#blocks = {
-\   '-': [
-\     {
-\       'block': ['( ', ' )'],
-\       'motionwise': ['char', 'line', 'block'],
-\       'keys': ['('],
-\     },
-\     {
-\       'block': ['{ ', ' }'],
-\       'motionwise': ['char', 'line', 'block'],
-\       'keys': ['{'],
-\     },
-\     {
-\       'block': ['(', ')'],
-\       'motionwise': ['char', 'line', 'block'],
-\       'keys': [')'],
-\     },
-\     {
-\       'block': ['[', ']'],
-\       'motionwise': ['char', 'line', 'block'],
-\       'keys': [']'],
-\     },
-\     {
-\       'block': ['{', '}'],
-\       'motionwise': ['char', 'line', 'block'],
-\       'keys': ['}'],
-\     },
-\     {
-\       'block': ['<', '>'],
-\       'motionwise': ['char', 'line', 'block'],
-\       'keys': ['<', '>'],
-\     },
-\     {
-\       'block': ['"', '"'],
-\       'motionwise': ['char', 'line', 'block'],
-\       'keys': ['"'],
-\     },
-\     {
-\       'block': ["'", "'"],
-\       'motionwise': ['char', 'line', 'block'],
-\       'keys': ["'"],
-\     },
-\     {
-\       'block': ['`', '`'],
-\       'motionwise': ['char', 'line', 'block'],
-\       'keys': ['`'],
-\     },
-\   ],
-\ }
+" Light wrapper around mkdir.
+function! s:mkdir(dir)
+  execute 'silent !mkdir ' . (has('win32') ? '' : '-p') . ' ' .
+        \ shellescape(a:dir, 1)
+endfunction
 
 " vim-dirvish
 let g:dirvish_relative_paths = 1
@@ -181,10 +146,9 @@ set smartcase  " Don't ignore case when capital letter is typed.
 " r: Insert current comment leader when pressing enter in Insert mode.
 " o: Insert current comment leader when o or O is pressed in Normal mode.
 " q: Format comments with gq.
-" n: Numbered list indent.
 " l: Long lines are not broken in insert mode.
 " j: Remove comment leader when joining.
-set formatoptions=croqnl
+set formatoptions=croql
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j
 endif
@@ -215,6 +179,7 @@ set completeopt=menu,menuone,longest
 
 " Persistent undo.
 if has('persistent_undo')
+  set undofile
   set undolevels=1000
 endif
 
@@ -228,8 +193,21 @@ set nomodeline
 " For faster macros; Use CTRL-L to force redraw.
 set lazyredraw
 
-" No accidental beepings.
-set visualbell
+" Follow XDG, unclutter editing directory. Neovim already does.
+if !has('nvim')
+  " Undo files.
+  if has('persistent_undo')
+    call s:mkdir(s:undo_dir)
+    let &undodir = s:undo_dir
+  endif
+
+  " Swaps.
+  call s:mkdir(s:swap_dir)
+  let &directory = s:swap_dir . '//,.'
+
+  " Viminfo.
+  let &viminfo = &viminfo . 'n' . s:data_dir . '/info'
+endif
 
 " Don't show trailing in insert mode.
 autocmd vimrc InsertEnter * setlocal listchars-=trail:-
@@ -240,9 +218,9 @@ autocmd vimrc BufWritePre * call <SID>strip_trailing_white()
 
 " Annoying ftplugins.
 if v:version > 703 || v:version == 703 && has('patch541')
-  autocmd vimrc FileType * setlocal formatoptions=croqnlj
+  autocmd vimrc FileType * setlocal formatoptions=croqlj
 else
-  autocmd vimrc FileType * setlocal formatoptions=croqnl
+  autocmd vimrc FileType * setlocal formatoptions=croql
 endif
 
 " Previous and next buffers.
@@ -255,13 +233,5 @@ nnoremap ]q :cnext<cr>
 
 " Make Y consistent with C and D.
 nnoremap Y y$
-
-" vim-operator-surround
-nmap <silent> sa <Plug>(operator-surround-append)
-nmap <silent> sd <Plug>(operator-surround-delete)
-nmap <silent> sr <Plug>(operator-surround-replace)
-xmap <silent> sa <Plug>(operator-surround-append)
-xmap <silent> sd <Plug>(operator-surround-delete)
-xmap <silent> sr <Plug>(operator-surround-replace)
 
 command! -nargs=1 I call <SID>set_indent_width('<args>')
