@@ -206,7 +206,7 @@ if !has('nvim')
   let &directory = s:swap_dir . '//,.'
 
   " Viminfo.
-  let &viminfo = &viminfo . 'n' . s:data_dir . '/info'
+  let &viminfo = &viminfo . ',n' . s:data_dir . '/info'
 endif
 
 " Don't show trailing in insert mode.
@@ -235,3 +235,9 @@ nnoremap ]q :cnext<cr>
 nnoremap Y y$
 
 command! -nargs=1 I call <SID>set_indent_width('<args>')
+
+delfunction s:mkdir
+unlet s:vim_dir
+unlet s:data_dir
+unlet s:swap_dir
+unlet s:undo_dir
