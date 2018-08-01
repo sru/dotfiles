@@ -28,7 +28,7 @@ else
   let s:cterm.yellow  = '222'
   let s:cterm.blue    = '109'
   let s:cterm.magenta = '139'
-  let s:cterm.gray    = '237'
+  let s:cterm.gray    = '243'
 endif
 
 let s:cterm.none = 'NONE'
@@ -38,7 +38,7 @@ let s:gui.green   = '#9ca450'
 let s:gui.yellow  = '#f0c674'
 let s:gui.blue    = '#81a2be'
 let s:gui.magenta = '#b294bb'
-let s:gui.gray    = '#3a3a3a'
+let s:gui.gray    = '#767676'
 
 let s:gui.none = 'NONE'
 
