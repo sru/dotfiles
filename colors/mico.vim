@@ -123,6 +123,10 @@ call s:highlight('PmenuSel', 'none', 'none', 'NONE')
 call s:highlight('PmenuSbar', 'none', 'gray', 'NONE')
 call s:highlight('PmenuThumb', 'gray', 'none', 'NONE')
 
+" Specific to vim help files.
+call s:highlight('helpHyperTextJump', 'magenta', 'none', 'NONE')
+call s:highlight('helpOption', 'red', 'none', 'NONE')
+
 delfunction s:highlight
 unlet s:cterm
 unlet s:gui
