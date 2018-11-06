@@ -32,6 +32,8 @@ else
 endif
 
 let s:cterm.none = 'NONE'
+let s:cterm.bg = 'NONE'
+let s:cterm.fg = 'NONE'
 
 let s:gui.red     = '#b85a5a'
 let s:gui.green   = '#9ca450'
@@ -41,6 +43,8 @@ let s:gui.magenta = '#b294bb'
 let s:gui.gray    = '#767676'
 
 let s:gui.none = 'NONE'
+let s:gui.bg = '#1c1c1c'
+let s:gui.fg = '#e4e4e4'
 
 function! s:highlight(group, fg, bg, style) abort
   execute 'highlight ' . a:group .
@@ -49,7 +53,7 @@ function! s:highlight(group, fg, bg, style) abort
         \ ' cterm=' . a:style . ' gui=' . a:style
 endfunction
 
-call s:highlight('Normal', 'none', 'none', 'NONE')
+call s:highlight('Normal', 'fg', 'bg', 'NONE')
 
 call s:highlight('Conceal', 'none', 'none', 'NONE')
 call s:highlight('Directory', 'none', 'none', 'NONE')
