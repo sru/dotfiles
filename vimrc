@@ -193,6 +193,11 @@ set nomodeline
 " For faster macros; Use CTRL-L to force redraw.
 set lazyredraw
 
+" Remove 'cw' bug from remnants of Vi.
+if has('nvim') && &cpoptions =~# '_'
+  set cpoptions-=_
+endif
+
 " Follow XDG, unclutter editing directory. Neovim already does.
 if !has('nvim')
   " Undo files.
