@@ -19,9 +19,13 @@ else
   endif
 endif
 
-let g:plug_path = s:data_path . '/plugged'
+let s:config_path = expand('<sfile>:p:h')
+if !empty(glob(s:config_path . '/autoload/plug.vim'))
+  let g:plug_path = s:data_path . '/plugged'
+endif
 execute 'source ' . expand('<sfile>:p:h') . '/common.vim'
-unlet g:plug_path
+unlet! g:plug_path
+unlet s:config_path
 
 " Undo files.
 let s:undo_path = s:data_path . '/undo'

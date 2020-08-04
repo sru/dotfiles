@@ -3,8 +3,7 @@ augroup vimrc
   autocmd!
 augroup END
 
-" Check if vim-plug exists.
-if exists('*plug#begin')
+if exists('g:plug_path')
   " Suppress error about git not found.
   silent! call plug#begin(g:plug_path)
 
