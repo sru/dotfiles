@@ -1,1 +1,4 @@
 colorscheme mico
+
+map global insert <tab> '<a-;><gt>'
+map global insert <s-tab> '<a-;><lt>'
