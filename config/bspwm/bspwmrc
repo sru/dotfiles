@@ -1,5 +1,11 @@
 #! /bin/sh
 
+# Change the cursor to left pointer.
+xsetroot -cursor_name left_ptr &
+
+# Add background wallpaper.
+feh --no-fehbg --bg-scale "${HOME}/files/pictures/wallpaper/bg.jpg"
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
