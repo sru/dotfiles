@@ -6,6 +6,3 @@ export EDITOR=kak
 export VISUAL=kak
 
 export LESSHISTFILE="${XDG_DATA_HOME}/less/history"
-
-# Disable accessibility.
-export NO_AT_BRIDGE=1
