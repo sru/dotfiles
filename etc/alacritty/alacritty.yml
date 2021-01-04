@@ -52,7 +52,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  #decorations: full
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -163,7 +163,7 @@ font:
   #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: false
 
 # Colors (One Half Light)
 colors:
@@ -225,25 +225,47 @@ colors:
     #  foreground: '#1d1f21'
 
   # Normal colors
+  #normal:
+  #  black: '#383a42'
+  #  red: '#e45649'
+  #  green: '#50a14f'
+  #  yellow: '#c18401'
+  #  blue: '#0184bc'
+  #  magenta: '#a626a4'
+  #  cyan: '#0997b3'
+  #  white: '#fafafa'
+
+  # Bright colors
+  #bright:
+  #  black: '#383a42'
+  #  red: '#e45649'
+  #  green: '#50a14f'
+  #  yellow: '#c18401'
+  #  blue: '#0184bc'
+  #  magenta: '#a626a4'
+  #  cyan: '#0997b3'
+  #  white: '#fafafa'
+
+  # Normal colors
   normal:
     black: '#383a42'
-    red: '#e45649'
-    green: '#50a14f'
-    yellow: '#c18401'
-    blue: '#0184bc'
-    magenta: '#a626a4'
-    cyan: '#0997b3'
+    red: '#e9806e'
+    green: '#5fbb97'
+    yellow: '#f2da2c'
+    blue: '#3f88c5'
+    magenta: '#b388eb'
+    cyan: '#4dccbd'
     white: '#fafafa'
 
   # Bright colors
   bright:
     black: '#383a42'
-    red: '#e45649'
-    green: '#50a14f'
-    yellow: '#c18401'
-    blue: '#0184bc'
-    magenta: '#a626a4'
-    cyan: '#0997b3'
+    red: '#e9806e'
+    green: '#5fbb97'
+    yellow: '#f2da2c'
+    blue: '#758bfd'
+    magenta: '#b388eb'
+    cyan: '#4dccbd'
     white: '#fafafa'
 
   # Dim colors
@@ -317,11 +339,11 @@ colors:
 # The value `0.0` is completely transparent and `1.0` is opaque.
 #background_opacity: 1.0
 
-#selection:
+selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+  save_to_clipboard: true
 
 #cursor:
   # Cursor style
