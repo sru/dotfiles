@@ -4,6 +4,7 @@
 feh --no-fehbg --bg-scale "${HOME}/media/images/wallpaper/bg.jpg"
 
 pgrep -x sxhkd > /dev/null || sxhkd &
+fcitx5 -dr
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
