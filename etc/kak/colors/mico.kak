@@ -1,5 +1,34 @@
 # Minimal Colorscheme
 
+# Builtin
+face global Default            black,white
+face global PrimarySelection   black,cyan+fg
+face global SecondarySelection black,cyan+fg
+face global PrimaryCursor      black,blue+fg
+face global SecondaryCursor    black,green+fg
+face global PrimaryCursorEol   black,blue+fg
+face global SecondaryCursorEol black,green+fg
+face global MenuForeground     black,blue
+face global MenuBackground     black,white
+face global MenuInfo           cyan
+face global Information        black,cyan
+face global Error              red,white+b
+face global StatusLine         Default
+face global StatusLineMode     red
+face global StatusLineInfo     cyan
+face global StatusLineValue    red
+face global StatusCursor       PrimaryCursor
+face global Prompt             yellow+b
+face global BufferPadding      blue
+
+# Builtin Highlighters
+#face global LineNumbers
+#face global LineNumberCursor
+#face global LineNumbersWrapped
+#face global MatchingChar
+#face global Whitespace
+#face global WrapMarker
+
 # code
 face global value              red
 face global string             value
@@ -15,40 +44,13 @@ face global function           Default
 face global keyword            Default
 face global operator           Default
 face global meta               Default
-
-#face global builtin            default+b
+face global builtin            Default
 
 # markup
-#face global title              blue+b
-#face global header             blue
-#face global mono               bright-cyan
-#face global block              cyan
-#face global link               bright-green
-#face global bullet             yellow
-#face global list               green
-
-# builtin
-face global Default            black,white
-face global PrimarySelection   white,blue+fg
-face global SecondarySelection white,green+fg
-face global PrimaryCursor      white,black+fg
-face global SecondaryCursor    white,blue+fg
-face global PrimaryCursorEol   white,yellow+fg
-face global SecondaryCursorEol white,blue+fg
-face global LineNumbers        cyan,white
-face global LineNumberCursor   green,white
-face global LineNumbersWrapped white,white
-face global MenuForeground     white,black
-face global MenuBackground     black,white
-face global MenuInfo           cyan
-face global Information        white,cyan
-face global Error              red,default+b
-face global StatusLine         Default
-face global StatusLineMode     red
-face global StatusLineInfo     cyan
-face global StatusLineValue    green
-face global StatusCursor       PrimaryCursor
-face global Prompt             yellow+b
-face global MatchingChar       red,white+b
-face global BufferPadding      LineNumbers
-face global Whitespace         cyan+f
+#face global title
+#face global header
+#face global mono
+#face global block
+#face global link
+#face global bullet
+#face global list
