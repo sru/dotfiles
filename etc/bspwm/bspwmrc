@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Change the cursor to left pointer.
-xsetroot -cursor_name left_ptr &
-
 # Add background wallpaper.
 feh --no-fehbg --bg-scale "${HOME}/media/images/wallpaper/bg.jpg"
 
