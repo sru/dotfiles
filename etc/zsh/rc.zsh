@@ -16,6 +16,8 @@ autoload -Uz compinit
 compinit -d "${XDG_CACHE_HOME}/zsh-compdump"
 
 zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+r:|[._-]=* r:|=*' '+l:|=* r:|=*'
 zstyle ':completion:*' match-original both
 zstyle ':completion:*' max-errors 1
