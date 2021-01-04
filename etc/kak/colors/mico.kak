@@ -6,7 +6,7 @@ face global PrimarySelection   black,cyan+fg
 face global SecondarySelection black,cyan+fg
 face global PrimaryCursor      black,blue+fg
 face global SecondaryCursor    black,green+fg
-face global PrimaryCursorEol   black,blue+fg
+face global PrimaryCursorEol   black,magenta+fg
 face global SecondaryCursorEol black,green+fg
 face global MenuForeground     black,blue
 face global MenuBackground     black,white
