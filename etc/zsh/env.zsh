@@ -1,11 +1,11 @@
-# XDG Base Directories.
+# XDG Base Directories
 export XDG_CACHE_HOME="${HOME}/.local/cache"
 export XDG_CONFIG_HOME="${HOME}/.local/etc"
 export XDG_DATA_HOME="${HOME}/.local/share"
 
-# Editors.
+# Editors
 export EDITOR=kak
 export VISUAL=kak
 
-# Zsh settings.
+# Zsh
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
