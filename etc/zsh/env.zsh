@@ -3,8 +3,9 @@ export XDG_CACHE_HOME="${HOME}/.local/cache"
 export XDG_CONFIG_HOME="${HOME}/.local/etc"
 export XDG_DATA_HOME="${HOME}/.local/share"
 
-# Editor settings.
+# Editors.
 export EDITOR=kak
 export VISUAL=kak
 
+# Zsh settings.
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
