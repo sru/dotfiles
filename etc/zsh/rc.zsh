@@ -23,6 +23,10 @@ zstyle ':completion:*' match-original both
 zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' menu select
 
+# Prompt
+PROMPT='%17<..<%~%<< %(?..%F{red})%#%f '
+RPROMPT='%*'
+
 # Aliases
 alias e="${EDITOR}"
 alias g='git'
