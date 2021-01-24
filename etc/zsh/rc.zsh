@@ -1,7 +1,7 @@
 # History
-export HISTFILE="${XDG_DATA_HOME}/zsh-history"
-export HISTSIZE=1000
-export SAVEHIST=1000
+HISTFILE="${XDG_DATA_HOME}/zsh-history"
+HISTSIZE=1000
+SAVEHIST=1000
 
 # Options
 

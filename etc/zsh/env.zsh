@@ -8,4 +8,4 @@ export EDITOR=kak
 export VISUAL=kak
 
 # Zsh
-export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
