@@ -1,5 +1,5 @@
 # History
-HISTFILE="${XDG_DATA_HOME}/zsh-history"
+HISTFILE="${XDG_DATA_HOME:-${HOME}/.local/share}/zsh-history"
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -13,7 +13,7 @@ unsetopt LIST_AMBIGUOUS
 # Completion
 
 autoload -Uz compinit
-compinit -d "${XDG_CACHE_HOME}/zsh-compdump"
+compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh-compdump"
 
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' expand prefix suffix
