@@ -1,56 +1,56 @@
 # Minimal Colorscheme
 
 # Builtin
-face global Default            black,white
-face global PrimarySelection   black,cyan+fg
-face global SecondarySelection black,cyan+fg
-face global PrimaryCursor      black,blue+fg
-face global SecondaryCursor    black,green+fg
-face global PrimaryCursorEol   black,magenta+fg
-face global SecondaryCursorEol black,green+fg
-face global MenuForeground     black,blue
-face global MenuBackground     black,white
-face global MenuInfo           cyan
-face global Information        black,cyan
-face global Error              red,white+b
-face global StatusLine         Default
-face global StatusLineMode     red
-face global StatusLineInfo     cyan
-face global StatusLineValue    red
-face global StatusCursor       PrimaryCursor
-face global Prompt             yellow+b
-face global BufferPadding      blue
+set-face global Default            default,default
+set-face global PrimarySelection   default,green+fg
+set-face global SecondarySelection default,green+fg
+set-face global PrimaryCursor      blue,default+rfg
+set-face global SecondaryCursor    default,blue+fg
+set-face global PrimaryCursorEol   @PrimaryCursor
+set-face global SecondaryCursorEol @SecondaryCursor
+set-face global MenuForeground     blue,default+b
+set-face global MenuBackground     blue,default
+set-face global MenuInfo           blue,default
+set-face global Information        default,blue
+set-face global Error              red,default+b
+set-face global StatusLine         @Default
+set-face global StatusLineMode     red
+set-face global StatusLineInfo     blue
+set-face global StatusLineValue    red
+set-face global StatusCursor       @PrimaryCursor
+set-face global Prompt             yellow+b
+set-face global BufferPadding      blue,default
 
 # Builtin Highlighters
-#face global LineNumbers
-#face global LineNumberCursor
-#face global LineNumbersWrapped
-#face global MatchingChar
-#face global Whitespace
-#face global WrapMarker
+#set-face global LineNumbers
+#set-face global LineNumberCursor
+#set-face global LineNumbersWrapped
+#set-face global MatchingChar
+set-face global Whitespace         @BufferPadding
+set-face global WrapMarker         @BufferPadding
 
 # code
-face global value              red
-face global string             value
+set-face global value              red
+set-face global string             @value
 
-face global comment            green
-face global documentation      comment
+set-face global comment            green
+set-face global documentation      @comment
 
-face global attribute          Default
-face global type               Default
-face global variable           Default
-face global module             Default
-face global function           Default
-face global keyword            Default
-face global operator           Default
-face global meta               Default
-face global builtin            Default
+set-face global attribute          @Default
+set-face global type               @Default
+set-face global variable           @Default
+set-face global module             @Default
+set-face global function           @Default
+set-face global keyword            @Default
+set-face global operator           @Default
+set-face global meta               @Default
+set-face global builtin            @Default
 
 # markup
-#face global title
-#face global header
-#face global mono
-#face global block
-#face global link
-#face global bullet
-#face global list
+#set-face global title
+#set-face global header
+#set-face global mono
+#set-face global block
+#set-face global link
+#set-face global bullet
+#set-face global list

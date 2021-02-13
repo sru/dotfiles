@@ -1,5 +1,6 @@
 set-option global autocomplete prompt
 
+add-highlighter global/show-whitespaces show-whitespaces -spc ' '
 colorscheme mico
 
 hook global InsertChar '\t' %{ try %{
