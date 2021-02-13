@@ -3,12 +3,16 @@
 #
 
 # terminal emulator
-super + Return
+super + Return; t
 	alacritty
 
 # browser
-super + b
-	firefox
+super + Return; b
+	qutebrowser
+
+super + Return; k
+	keepassxc
+
 
 # make sxhkd reload its configuration files:
 super + Escape
