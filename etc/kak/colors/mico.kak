@@ -2,10 +2,10 @@
 
 # Builtin
 set-face global Default            default,default
-set-face global PrimarySelection   default,green+fg
-set-face global SecondarySelection default,green+fg
-set-face global PrimaryCursor      blue,default+rfg
-set-face global SecondaryCursor    default,blue+fg
+set-face global PrimarySelection   default,blue+fg
+set-face global SecondarySelection default,blue+fg
+set-face global PrimaryCursor      default,default+rfg
+set-face global SecondaryCursor    blue,default+rfg
 set-face global PrimaryCursorEol   @PrimaryCursor
 set-face global SecondaryCursorEol @SecondaryCursor
 set-face global MenuForeground     blue,default+b
@@ -19,7 +19,7 @@ set-face global StatusLineInfo     blue
 set-face global StatusLineValue    red
 set-face global StatusCursor       @PrimaryCursor
 set-face global Prompt             yellow+b
-set-face global BufferPadding      blue,default
+set-face global BufferPadding      blue,default+fg
 
 # Builtin Highlighters
 #set-face global LineNumbers
