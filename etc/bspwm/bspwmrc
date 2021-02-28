@@ -5,15 +5,16 @@ xsetroot -cursor_name left_ptr
 # Add background wallpaper.
 feh --no-fehbg --bg-scale "${HOME}/media/images/wallpaper/bg.jpg"
 
-pgrep -x sxhkd > /dev/null || sxhkd &
-fcitx5 -dr
+pgrep --exact sxhkd > /dev/null || sxhkd &
+fcitx5 -d --replace
+pgrep conky > /dev/null || conky --daemonize --config="${XDG_CONFIG_HOME:-${HOME}/.config}/conky/conky.conf"
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         2
 bspc config window_gap          12
 
-bspc config split_ratio          0.52
+bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
