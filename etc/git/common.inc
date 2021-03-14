@@ -5,12 +5,16 @@
 	cm = commit -m
 	co = checkout
 	d = diff
+	ds = diff --staged
 	f = fetch
-	l = log --all --graph --oneline
+	fp = fetch --prune
+	l = log
+	lo = log --oneline
 	m = merge
 	p = push
+	pu = push --set-upstream origin HEAD
 	r = rebase
-	s = status -sb
+	s = status --short --branch
 [push]
 	default = simple
 [rebase]
