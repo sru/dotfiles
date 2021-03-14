@@ -1,11 +1,5 @@
 #!/bin/sh
 
-# Source X resources.
-xresources="${0%/*}/xresources"
-if [ -f "${xresources}" ]; then
-  xrdb -merge "${xresources}"
-fi
-
 # Input Method
 export QT_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
