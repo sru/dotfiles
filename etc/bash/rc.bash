@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-export EDITOR=kak
-export VISUAL=kak
-
 # Stop if it's not interactive.
 if [[ $- != *i* ]]; then
   return
 fi
+
+export EDITOR=kak
+export VISUAL=kak
 
 # Update COLUMNS and LINES after each command.
 shopt -s checkwinsize
@@ -18,8 +18,8 @@ shopt -s globstar
 # History options.
 HISTCONTROL=ignorespace
 HISTFILE="${XDG_DATA_HOME:-${HOME}/.local/share}/bash-history"
-HISTFILESIZE=2000
-HISTSIZE=1000
+HISTFILESIZE=10000
+HISTSIZE=10000
 HISTTIMEFORMAT='%F %T '
 
 # Emulate Zsh when the last command's output doesn't end with new line.

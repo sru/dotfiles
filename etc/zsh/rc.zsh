@@ -1,9 +1,12 @@
-# History
-HISTFILE="${XDG_DATA_HOME:-${HOME}/.local/share}/zsh-history"
-HISTSIZE=1000
-SAVEHIST=1000
 
 # Options
+
+## History
+HISTFILE="${XDG_DATA_HOME:-${HOME}/.local/share}/zsh-history"
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt HIST_IGNORE_SPACE
 
 ## Completion
 setopt ALWAYS_TO_END
@@ -24,9 +27,8 @@ zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' menu select
 
 # Prompt
-PROMPT='%17<..<%~%<< %(?..%F{red})%#%f '
-RPROMPT='%*'
+PROMPT='%# '
 
 # Aliases
-alias e="${EDITOR}"
-alias g='git'
+alias e=kak
+alias g=git
