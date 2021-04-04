@@ -19,3 +19,7 @@ fi
 if [[ ! -v SSH_AUTH_SOCK ]]; then
   source "${XDG_RUNTIME_DIR}/ssh-agent.env" >/dev/null
 fi
+
+if [[ "$(tty)" = "/dev/tty1" ]]; then
+  sx
+fi
