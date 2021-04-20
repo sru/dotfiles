@@ -10,7 +10,7 @@ hook -group kakrc global InsertChar '\n' %{ try %{
 }
 
 hook -group kakrc global InsertChar '\t' %{ try %{
-  execute-keys -draft 'h<a-h> <a-k>\A\h+\z<ret> <a-;>; %opt{indentwidth}@'
+  execute-keys -draft "h<a-h> <a-k>\A\h+\z<ret> <a-;>; %opt{indentwidth}@"
 }}
 
 hook -group kakrc global InsertDelete ' ' %{ try %{
