@@ -1,22 +1,23 @@
 set-option global autocomplete prompt
 set-option global disabled_hooks '.+-indent'
+set-option global indentwidth 2
 
 add-highlighter global/show-whitespaces show-whitespaces -spc ' '
 
 colorscheme mico
 
 hook -group kakrc global InsertChar '\n' %{ try %{
-  execute-keys -draft 'k<a-x> s^\h+<ret>y j<a-h>P' }
-}
+  execute-keys -draft 'k<a-x>s^\h+<ret>yj<a-h>P'
+}}
 
 hook -group kakrc global InsertChar '\t' %{ try %{
-  execute-keys -draft "h<a-h> <a-k>\A\h+\z<ret> <a-;>; %opt{indentwidth}@"
+  execute-keys -draft "h<a-h><a-k>\A\h+\z<ret><a-;>;%opt{indentwidth}@"
 }}
 
 hook -group kakrc global InsertDelete ' ' %{ try %{
-  execute-keys -draft 'h<a-h> <a-k>\A\h+\z<ret> i<space><esc><lt>'
+  execute-keys -draft 'h<a-h><a-k>\A\h+\z<ret>i<space><esc><lt>'
 }}
 
 hook -group kakrc global BufWritePre .* %{ try %{
-  execute-keys -draft '% s\h+$<ret> d'
+  execute-keys -draft '%s\h+$<ret>d'
 }}
