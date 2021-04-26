@@ -32,4 +32,4 @@ hsetroot -fill "${HOME}/media/images/wallpaper/bg.jpg"
 
 # Services
 pgrep --exact sxhkd >/dev/null || sxhkd &
-pgrep --exact fcitx >/dev/null || fcitx &
+pgrep --exact fcitx5 >/dev/null || fcitx5 &
