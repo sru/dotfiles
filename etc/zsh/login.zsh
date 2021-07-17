@@ -21,5 +21,5 @@ if [[ ! -v SSH_AUTH_SOCK ]]; then
 fi
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-  dbus-run-session sx
+  sx
 fi

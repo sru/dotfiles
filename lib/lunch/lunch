@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+(IFS=$'\0'; echo -n "${(ko)commands[*]}") |
+  fzf --read0 --print0 --color=bw --reverse |
+  while read -r -d $'\0' executable ; do
+    nohup "${executable}" </dev/null >/dev/null 2>&1 &
+  done
+
+# Not sure why this is needed.
+# If this script exits too fast, the child process is not spawned.
+sleep 0.1

@@ -2,17 +2,14 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
-super + Return; t
-	alacritty
+super + Return
+	${HOME}/.local/lib/lunch/lunch-${TERMINAL}
 
-# browser
-super + Return; b
-	qutebrowser
+super + alt + Return
+	${TERMINAL} -e nnn
 
-super + Return; k
-	keepassxc
-
+super + alt + shift + Return
+	${BROWSER}
 
 # make sxhkd reload its configuration files:
 super + Escape

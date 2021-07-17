@@ -25,6 +25,7 @@ bspc config gapless_monocle true
 
 # Rules
 bspc rule -a KeePassXC state=floating center=on
+bspc rule -a '*:Lunch' state=floating center=on sticky=on
 
 # Oneshot
 xsetroot -cursor_name left_ptr
