@@ -24,8 +24,8 @@ bspc config borderless_monocle true
 bspc config gapless_monocle true
 
 # Rules
-bspc rule -a KeePassXC state=floating center=on
-bspc rule -a '*:Lunch' state=floating center=on sticky=on
+bspc rule --add 'KeePassXC' desktop=X state=fullscreen
+bspc rule --add '*:Lunch' state=floating center=on sticky=on
 
 # Oneshot
 xsetroot -cursor_name left_ptr
@@ -33,4 +33,5 @@ hsetroot -fill "${HOME}/media/images/wallpaper/bg.jpg"
 
 # Services
 pgrep --exact sxhkd >/dev/null || sxhkd &
+pgrep --exact keepassxc >/dev/null || keepassxc &
 pgrep --exact fcitx5 >/dev/null || fcitx5 &
