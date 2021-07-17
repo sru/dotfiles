@@ -24,7 +24,14 @@ HISTTIMEFORMAT='%F %T '
 
 # Emulate Zsh when the last command's output doesn't end with new line.
 # Prints percent sign in reverse mode and a newline before prompt.
-PS1='\[\e[7m%\e[m$(printf "%*s" "$((COLUMNS-1))" " ")\r\e[K\]\$ '
+prompt-command () {
+  IFS=';' read -s -d R -p $'\e[6n' row col
+  if [[ ${col} != 1 ]]; then
+    echo -e '\e[07m%\e[0m'
+  fi
+}
+PROMPT_COMMAND='prompt-command'
+PS1='\$ '
 
 alias g=git
 alias e=kak
