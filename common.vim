@@ -15,13 +15,12 @@ if exists('g:plug_path')
   call plug#end()
 endif
 
-filetype plugin indent on
-
 colorscheme mico
 
-if !exists('g:syntax_on')
-  syntax enable
-endif
+syntax on
+filetype on
+filetype indent off
+filetype plugin on
 
 function! s:set_indent_width(opts)
   let l:et = a:opts[0]
