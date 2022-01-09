@@ -1,0 +1,35 @@
+CursorType=block
+CursorBlinks=no
+
+Font=Consolas
+FontHeight=14
+
+Locale=C
+Charset=UTF-8
+
+Term=xterm
+BellType=0
+
+ForegroundColour=0,0,0
+BackgroundColour=255,255,255
+CursorColour=0,0,0
+
+Black=0,0,0 # 000000
+Red=168,0,0 # a80000
+Green=17,74,32 # 114a20
+Yellow=113,49,0 # 714900
+Blue=29,63,207 # 1d3fcf
+Magenta=136,42,122 # 882a7a
+Cyan=19,92,94 # 135c5e
+White=68,68,68 #444444
+
+BoldBlack=186,186,186 #bababa
+BoldRed=255,188,188 # ffb3b3
+BoldGreen=144,229,167 # 90e5a7
+BoldYellow=255,198,101 # ffc665
+BoldBlue=188,199,245 # bcc7f5
+BoldMagenta=236,196,231 # ecc4e7
+BoldCyan=128,227,228 # 80e3e4
+BoldWhite=255,255,255 # ffffff
+
+Scrollbar=none
