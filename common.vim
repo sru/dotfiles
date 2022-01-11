@@ -15,7 +15,7 @@ if exists('g:plug_path')
   call plug#end()
 endif
 
-colorscheme mico
+colorscheme seon-light
 
 syntax on
 filetype on
