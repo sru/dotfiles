@@ -5,8 +5,9 @@ if [[ $- != *i* ]]; then
   return
 fi
 
-export EDITOR=kak
-export VISUAL=kak
+: "${EDITOR:=kak}"
+export EDITOR
+export VISUAL="${EDITOR}"
 
 # Update COLUMNS and LINES after each command.
 shopt -s checkwinsize
@@ -17,7 +18,7 @@ shopt -s globstar
 
 # History options.
 HISTCONTROL=ignorespace
-HISTFILE="${XDG_DATA_HOME:-${HOME}/.local/share}/bash-history"
+HISTFILE="${XDG_DATA_HOME:-${HOME}/.local/share}/bash/history"
 HISTFILESIZE=10000
 HISTSIZE=10000
 HISTTIMEFORMAT='%F %T '
@@ -25,7 +26,7 @@ HISTTIMEFORMAT='%F %T '
 # Emulate Zsh when the last command's output doesn't end with new line.
 # Prints percent sign in reverse mode and a newline before prompt.
 prompt-command () {
-  IFS=';' read -s -d R -p $'\e[6n' row col
+  IFS=';' read -r -s -d R -p $'\e[6n' row col
   if [[ ${col} != 1 ]]; then
     echo -e '\e[07m%\e[0m'
   fi
@@ -34,7 +35,7 @@ PROMPT_COMMAND='prompt-command'
 PS1='\$ '
 
 alias g=git
-alias e=kak
+alias e='${EDITOR}'
 
 # Use Bash completion if it's installed.
 if ! shopt -oq posix; then
