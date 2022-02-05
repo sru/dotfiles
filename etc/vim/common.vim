@@ -3,6 +3,10 @@ augroup vimrc
   autocmd!
 augroup END
 
+let s:user_runtime = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+let &runtimepath = s:user_runtime . ',$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,' . s:user_runtime . '/after'
+unlet s:user_runtime
+
 if exists('g:plug_path')
   " Suppress error about git not found.
   silent! call plug#begin(g:plug_path)
