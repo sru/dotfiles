@@ -1,13 +1,7 @@
-#!/usr/bin/env bash
-
 # Stop if it's not interactive.
 if [[ $- != *i* ]]; then
   return
 fi
-
-: "${EDITOR:=kak}"
-export EDITOR
-export VISUAL="${EDITOR}"
 
 # Update COLUMNS and LINES after each command.
 shopt -s checkwinsize
@@ -18,7 +12,7 @@ shopt -s globstar
 
 # History options.
 HISTCONTROL=ignorespace
-HISTFILE="${XDG_DATA_HOME:-${HOME}/.local/share}/bash/history"
+HISTFILE="${XDG_STATE_HOME:-${HOME}/.local/state}/bash/history"
 HISTFILESIZE=10000
 HISTSIZE=10000
 HISTTIMEFORMAT='%F %T '
@@ -34,8 +28,8 @@ prompt-command () {
 PROMPT_COMMAND='prompt-command'
 PS1='\$ '
 
-alias g=git
 alias e='${EDITOR}'
+alias g=git
 
 # Use Bash completion if it's installed.
 if ! shopt -oq posix; then
