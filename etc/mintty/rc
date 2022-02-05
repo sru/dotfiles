@@ -7,7 +7,7 @@ FontHeight=14
 Locale=C
 Charset=UTF-8
 
-Term=xterm
+Term=xterm-256color
 BellType=0
 
 ForegroundColour=0,0,0
