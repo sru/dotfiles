@@ -12,10 +12,10 @@ if has('win32')
     let s:data_path = $HOME . '/AppData/Local/Vim'
   endif
 else
-  if exists('$XDG_DATA_HOME')
-    let s:data_path = $XDG_DATA_HOME . '/vim'
+  if exists('$XDG_STATE_HOME')
+    let s:data_path = $XDG_STATE_HOME . '/vim'
   else
-    let s:data_path = $HOME . '/.local/share/vim'
+    let s:data_path = $HOME . '/.local/state/vim'
   endif
 endif
 

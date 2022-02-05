@@ -60,6 +60,13 @@ function! s:strip_trailing_white()
   call winrestview(l:winview)
 endfunction
 
+" netrw
+if exists('$XDG_STATE_HOME')
+  let g:netrw_home = $XDG_STATE_HOME . '/vim'
+else
+  let g:netrw_home = $HOME . '.local/state/vim'
+endif
+
 " vim-dirvish
 let g:dirvish_relative_paths = 1
 
