@@ -1,9 +1,8 @@
-" File: mico.vim
+" File: seon.vim
 " Author: Sung Rim Huh <sungrimhuh@gmail.com>
 " License: MIT
 " Description:
 " Seon colorscheme.
-" The color palettes are based on Tempus Totus theme, modified to suit my taste.
 " The colorscheme only works with 16 colors or 24-bit truecolors.
 " There is no dark variant.
 
@@ -12,7 +11,7 @@ highlight clear
 if exists('syntax_on')
   syntax reset
 endif
-let g:colors_name = 'seon-light'
+let g:colors_name = 'seon'
 
 let s:cterm = {}
 let s:cterm.black         = '0'
@@ -37,20 +36,20 @@ let s:cterm.none          = 'NONE'
 
 let s:gui = {}
 let s:gui.black         = '#000000'
-let s:gui.red           = '#a80000'
-let s:gui.green         = '#114a20'
-let s:gui.yellow        = '#714900'
-let s:gui.blue          = '#1d3fcf'
-let s:gui.magenta       = '#882a7a'
-let s:gui.cyan          = '#135c5e'
-let s:gui.white         = '#444444'
-let s:gui.brightBlack   = '#bababa'
-let s:gui.brightRed     = '#ffb3b3'
-let s:gui.brightGreen   = '#90e5a7'
-let s:gui.brightYellow  = '#ffc665'
-let s:gui.brightBlue    = '#bcc7f5'
-let s:gui.brightMagenta = '#ecc4e7'
-let s:gui.brightCyan    = '#80e3e4'
+let s:gui.red           = '#ce2029'
+let s:gui.green         = '#007d32'
+let s:gui.yellow        = '#ab9100'
+let s:gui.blue          = '#1c39bb'
+let s:gui.magenta       = '#663399'
+let s:gui.cyan          = '#ff7900'
+let s:gui.white         = '#555555'
+let s:gui.brightBlack   = '#ababab'
+let s:gui.brightRed     = '#efb5b8'
+let s:gui.brightGreen   = '#abd4bb'
+let s:gui.brightYellow  = '#ffd800'
+let s:gui.brightBlue    = '#b4bee9'
+let s:gui.brightMagenta = '#cdbcdd'
+let s:gui.brightCyan    = '#ffd3ab'
 let s:gui.brightWhite   = '#ffffff'
 let s:gui.fg            = '#000000'
 let s:gui.bg            = '#ffffff'

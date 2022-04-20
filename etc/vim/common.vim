@@ -19,7 +19,7 @@ if exists('g:plug_path')
   call plug#end()
 endif
 
-colorscheme seon-light
+colorscheme seon
 
 syntax on
 filetype on
