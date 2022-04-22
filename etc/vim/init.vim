@@ -1,4 +1,4 @@
-" Declare autocmd group and remove all existing autcmds for the group.
+" Declare autocmd group and remove all existing autocmds for the group.
 augroup vimrc
   autocmd!
 augroup END
@@ -6,18 +6,14 @@ augroup END
 " Follow XDG, unclutter editing directory.
 let s:config_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
-if has('win32')
-  if exists('$LOCALAPPDATA')
-    let s:data_path = $LOCALAPPDATA . '/vim-data'
-  else
-    let s:data_path = $HOME . '/AppData/Local/vim-data'
-  endif
+if exists('$XDG_STATE_HOME')
+  let s:data_path = $XDG_STATE_HOME . '/vim'
+elseif !has('win32')
+  let s:data_path = $HOME . '/.local/state/vim'
+elseif exists('$LOCALAPPDATA')
+  let s:data_path = $LOCALAPPDATA . '/vim-data'
 else
-  if exists('$XDG_STATE_HOME')
-    let s:data_path = $XDG_STATE_HOME . '/vim'
-  else
-    let s:data_path = $HOME . '/.local/state/vim'
-  endif
+  let s:data_path = $HOME . '/AppData/Local/vim-data'
 endif
 
 " Modify runtimepath to follow XDG.
