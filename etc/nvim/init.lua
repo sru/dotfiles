@@ -3,6 +3,12 @@ local autocmd_id = vim.api.nvim_create_augroup('vimrc', {
   clear = true
 })
 
+local strip_trailing_whitespaces = function()
+  local saved_view = vim.fn.winsaveview()
+  vim.cmd('silent! keepjumps keeppatterns %s/\\s\\+$//')
+  vim.fn.winrestview(saved_view)
+end
+
 -- Follow XDG.
 local data_path
 if vim.env.XDG_STATE_HOME ~= nil then
@@ -72,14 +78,20 @@ vim.opt.wildmode = 'list:longest'
 
 vim.api.nvim_create_autocmd('InsertEnter', {
   group = autocmd_id,
-  desc = 'Remove trailing whitespace character when entering insert mode.',
+  desc = 'Hide trailing whitespace when entering insert mode.',
   callback = function() vim.opt.listchars:remove({trail = '-'}) end,
 })
 
 vim.api.nvim_create_autocmd('InsertLeave', {
   group = autocmd_id,
-  desc = 'Add trailing whitespace character when leaving insert mode.',
+  desc = 'Show trailing whitespace when leaving insert mode.',
   callback = function() vim.opt.listchars:append({trail = '-'}) end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = autocmd_id,
+  desc = 'Remove trailing whitespaces when saving.',
+  callback = function() strip_trailing_whitespaces() end,
 })
 
 vim.keymap.set('n', 'Y', 'y$')
