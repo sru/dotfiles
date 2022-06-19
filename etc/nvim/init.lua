@@ -33,9 +33,7 @@ vim.cmd [[
   filetype plugin on
 ]]
 
-vim.g.newrw_home = data_path
-
-vim.g.dirvish_relative_paths = 1
+vim.g.netrw_home = data_path
 
 vim.opt.autoindent = true
 vim.opt.autoread = true
@@ -61,6 +59,7 @@ vim.opt.listchars = {tab = '>-', trail = '-'}
 vim.opt.modeline = false
 vim.opt.number = false
 vim.opt.ruler = false
+vim.opt.shadafile = data_path .. '/shada'
 vim.opt.shiftwidth = 2
 vim.opt.shortmess = 'atI'
 vim.opt.showcmd = true
