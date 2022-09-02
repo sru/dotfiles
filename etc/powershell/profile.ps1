@@ -26,6 +26,26 @@ if ($host.Name -eq 'ConsoleHost') {
     }
   }
   Set-PSReadLineOption @params
+
+  Set-Alias g git
+
+  Remove-Alias cat
+  Remove-Alias cd
+  Remove-Alias cp
+  Remove-Alias curl
+  Remove-Alias diff
+  Remove-Alias dir
+  Remove-Alias echo
+  Remove-Alias ls
+  Remove-Alias man
+  Remove-Alias mv
+  Remove-Alias popd
+  Remove-Alias ps
+  Remove-Alias pushd
+  Remove-Alias pwd
+  Remove-Alias rm
+  Remove-Alias rmdir
+  Remove-Alias wget
 }
 
 function Prompt {
