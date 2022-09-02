@@ -33,7 +33,6 @@ if ($host.Name -eq 'ConsoleHost') {
   Remove-Item Alias:cd
   Remove-Item Alias:cp
   Remove-Item Alias:curl
-  Remove-Item Alias:diff
   Remove-Item Alias:dir
   Remove-Item Alias:echo
   Remove-Item Alias:ls
