@@ -29,23 +29,23 @@ if ($host.Name -eq 'ConsoleHost') {
 
   Set-Alias g git
 
-  Remove-Alias cat
-  Remove-Alias cd
-  Remove-Alias cp
-  Remove-Alias curl
-  Remove-Alias diff
-  Remove-Alias dir
-  Remove-Alias echo
-  Remove-Alias ls
-  Remove-Alias man
-  Remove-Alias mv
-  Remove-Alias popd
-  Remove-Alias ps
-  Remove-Alias pushd
-  Remove-Alias pwd
-  Remove-Alias rm
-  Remove-Alias rmdir
-  Remove-Alias wget
+  Remove-Item Alias:cat
+  Remove-Item Alias:cd
+  Remove-Item Alias:cp
+  Remove-Item Alias:curl
+  Remove-Item Alias:diff
+  Remove-Item Alias:dir
+  Remove-Item Alias:echo
+  Remove-Item Alias:ls
+  Remove-Item Alias:man
+  Remove-Item Alias:mv
+  Remove-Item Alias:popd
+  Remove-Item Alias:ps
+  Remove-Item Alias:pushd
+  Remove-Item Alias:pwd
+  Remove-Item Alias:rm
+  Remove-Item Alias:rmdir
+  Remove-Item Alias:wget
 }
 
 function Prompt {
