@@ -24,27 +24,28 @@ if ($host.Name -eq 'ConsoleHost') {
       Type = "$([char]0x1b)[30m"
       Variable = "$([char]0x1b)[30m"
     }
+    PredictionSource = 'None'
   }
   Set-PSReadLineOption @params
 
   Set-Alias g git
 
-  Remove-Item Alias:cat
-  Remove-Item Alias:cd
-  Remove-Item Alias:cp
-  Remove-Item Alias:curl
-  Remove-Item Alias:dir
-  Remove-Item Alias:echo
-  Remove-Item Alias:ls
-  Remove-Item Alias:man
-  Remove-Item Alias:mv
-  Remove-Item Alias:popd
-  Remove-Item Alias:ps
-  Remove-Item Alias:pushd
-  Remove-Item Alias:pwd
-  Remove-Item Alias:rm
-  Remove-Item Alias:rmdir
-  Remove-Item Alias:wget
+  Remove-Item Alias:cat -ErrorAction SilentlyContinue
+  Remove-Item Alias:cd -ErrorAction SilentlyContinue
+  Remove-Item Alias:cp -ErrorAction SilentlyContinue
+  Remove-Item Alias:curl -ErrorAction SilentlyContinue
+  Remove-Item Alias:dir -ErrorAction SilentlyContinue
+  Remove-Item Alias:echo -ErrorAction SilentlyContinue
+  Remove-Item Alias:ls -ErrorAction SilentlyContinue
+  Remove-Item Alias:man -ErrorAction SilentlyContinue
+  Remove-Item Alias:mv -ErrorAction SilentlyContinue
+  Remove-Item Alias:popd -ErrorAction SilentlyContinue
+  Remove-Item Alias:ps -ErrorAction SilentlyContinue
+  Remove-Item Alias:pushd -ErrorAction SilentlyContinue
+  Remove-Item Alias:pwd -ErrorAction SilentlyContinue
+  Remove-Item Alias:rm -ErrorAction SilentlyContinue
+  Remove-Item Alias:rmdir -ErrorAction SilentlyContinue
+  Remove-Item Alias:wget -ErrorAction SilentlyContinue
 }
 
 function Prompt {
