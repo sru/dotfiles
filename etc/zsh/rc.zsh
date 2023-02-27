@@ -31,3 +31,6 @@ PROMPT='%# '
 # Aliases
 alias e='${EDITOR}'
 alias g=git
+
+# Key bindings
+bindkey -e
