@@ -3,6 +3,13 @@ local autocmd_id = vim.api.nvim_create_augroup('vimrc', {
   clear = true
 })
 
+local paq_exists, paq = pcall(require, 'paq')
+if paq_exists then
+  paq {
+    'savq/paq-nvim',
+  }
+end
+
 local hide_trailing_space = function()
   local new_listchars = {}
   for listchar in vim.o.listchars:gmatch('([^,]+)') do
