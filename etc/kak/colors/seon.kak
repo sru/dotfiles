@@ -1,17 +1,15 @@
-# Minimal Colorscheme
-
 # Builtin
 set-face global Default            default,default
-set-face global PrimarySelection   default,blue+fg
-set-face global SecondarySelection default,blue+fg
+set-face global PrimarySelection   default,bright-black+fg
+set-face global SecondarySelection default,bright-black+fg
 set-face global PrimaryCursor      default,default+rfg
-set-face global SecondaryCursor    blue,default+rfg
+set-face global SecondaryCursor    white,default+rfg
 set-face global PrimaryCursorEol   @PrimaryCursor
 set-face global SecondaryCursorEol @SecondaryCursor
-set-face global MenuForeground     blue,default+b
-set-face global MenuBackground     blue,default
-set-face global MenuInfo           blue,default
-set-face global Information        default,blue
+set-face global MenuForeground     default,bright-black+b
+set-face global MenuBackground     default,bright-black
+set-face global MenuInfo           default,bright-black
+set-face global Information        default,bright-blue
 set-face global Error              red,default+b
 set-face global StatusLine         @Default
 set-face global StatusLineMode     red
@@ -19,7 +17,7 @@ set-face global StatusLineInfo     blue
 set-face global StatusLineValue    red
 set-face global StatusCursor       @PrimaryCursor
 set-face global Prompt             yellow+b
-set-face global BufferPadding      blue,default+fg
+set-face global BufferPadding      bright-black,default+fg
 
 # Builtin Highlighters
 #set-face global LineNumbers

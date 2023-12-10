@@ -4,10 +4,10 @@ set-option global indentwidth 2
 
 add-highlighter global/show-whitespaces show-whitespaces -spc ' '
 
-colorscheme mico
+colorscheme seon
 
 hook -group kakrc global InsertChar '\n' %{ try %{
-  execute-keys -draft 'k<a-x>s^\h+<ret>yj<a-h>P'
+  execute-keys -draft 'kxs^\h+<ret>yj<a-h>P'
 }}
 
 hook -group kakrc global InsertChar '\t' %{ try %{
