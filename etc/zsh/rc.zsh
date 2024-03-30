@@ -1,3 +1,6 @@
+# Functions
+autoload -Uz compinit zmv
+
 # Options
 
 ## History
@@ -14,7 +17,6 @@ unsetopt LIST_AMBIGUOUS
 
 # Completion
 
-autoload -Uz compinit
 compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/compdump"
 
 zstyle ':completion:*' completer _complete _match _approximate
@@ -23,7 +25,7 @@ zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+r:|[._-]=* r:|=*' '+l:|=* r:|=*'
 zstyle ':completion:*' match-original both
 zstyle ':completion:*' max-errors 1
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu no-select
 
 # Prompt
 PROMPT='%# '
