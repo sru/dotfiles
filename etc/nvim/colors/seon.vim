@@ -90,10 +90,12 @@ call s:highlight('LineNr', 'bright_black', 'none', 'NONE')
 call s:highlight('NonText', 'bright_black', 'none', 'NONE')
 call s:highlight('SpecialKey', 'bright_black', 'none', 'NONE')
 call s:highlight('StatusLine', 'bright_black', 'none', 'NONE')
-call s:highlight('StatusLineNC', 'bright_black', 'none', 'NONE')
-call s:highlight('VertSplit', 'bright_black', 'none', 'NONE')
+call s:highlight('WinSeparator', 'bright_black', 'none', 'NONE')
 
 call s:highlight('SignColumn', 'none', 'bright_black', 'NONE')
+
+" StatusLineNC must be different from StatusLine to remove carets (^).
+call s:highlight('StatusLineNC', 'bright_white', 'none', 'NONE')
 
 call s:highlight('Comment', 'green', 'none', 'NONE')
 

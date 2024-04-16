@@ -49,7 +49,7 @@ vim.o.hlsearch = false
 vim.o.ignorecase = true
 vim.o.incsearch = true
 vim.o.joinspaces = false
-vim.o.laststatus = 0
+vim.o.laststatus = 3
 vim.o.lazyredraw = true
 vim.o.list = true
 vim.o.listchars = 'tab:>-,trail:-'
@@ -63,7 +63,7 @@ vim.o.showmatch = false
 vim.o.showmode = true
 vim.o.smartcase = true
 vim.o.softtabstop = 2
-vim.o.statusline = "%{repeat('-',winwidth(0))}"
+vim.o.statusline = ' %f %y%m%r%=L%l:%c '
 vim.o.textwidth = 80
 vim.o.undofile = true
 vim.o.undolevels = 1000
