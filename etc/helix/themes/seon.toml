@@ -1,0 +1,9 @@
+"ui.background" = { bg = "white" }
+"ui.cursor" = { fg = "white", bg = "light-gray" }
+"ui.cursor.match" = { bg = "gray" }
+"ui.cursor.primary" = { fg = "white", bg = "black" }
+"ui.selection" = { bg = "gray" }
+"ui.statusline" = { fg = "gray" }
+"ui.virtual.whitespace" = { fg = "gray" }
+
+"comment" = { modifiers = ["italic"] }

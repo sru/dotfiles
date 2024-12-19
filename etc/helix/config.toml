@@ -1,0 +1,15 @@
+theme = "seon"
+
+[editor]
+gutters = []
+auto-completion = false
+auto-format = false
+auto-pairs = false
+
+[editor.statusline]
+left = ["file-name", "file-type", "file-encoding", "read-only-indicator", "file-modification-indicator"]
+center = []
+right = ["spinner", "diagnostics", "register", "selections", "position", "mode"]
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
