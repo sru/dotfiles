@@ -6,6 +6,9 @@ auto-completion = false
 auto-format = false
 auto-pairs = false
 
+[editor.smart-tab]
+supersede-menu = true
+
 [editor.statusline]
 left = ["file-name", "file-type", "file-encoding", "read-only-indicator", "file-modification-indicator"]
 center = []
