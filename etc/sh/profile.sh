@@ -6,6 +6,7 @@ set +a
 export EDITOR='/usr/bin/nvim'
 export VISUAL='/usr/bin/nvim'
 export PAGER='/usr/bin/less'
+export LESS='-FRX'
 
 # SSH_AUTH_SOCK variable may be set if SSH Agent is forwarded.
 # Don't overwrite it if it is already set.
