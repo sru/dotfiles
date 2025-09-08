@@ -1,3 +1,3 @@
-function e --wraps=helix --description 'alias e=helix'
-  helix $argv
+function e --wraps=nvim --description 'alias e=nvim'
+  nvim $argv
 end
