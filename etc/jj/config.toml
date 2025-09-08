@@ -1,2 +1,124 @@
 #:schema https://jj-vcs.github.io/jj/latest/config-schema.json
 
+[aliases]
+s = ["status"]
+
+[ui]
+default-command = "status"
+
+[colors]
+"error" = {}
+"error_source" = {}
+"warning" = {}
+"hint" = {}
+"error heading" = { fg = "red" }
+"error_source heading" = {}
+"warning heading" = { fg = "yellow" }
+"hint heading" = { fg = "green" }
+
+"conflict_description" = "yellow"
+"conflict_description difficult" = "red"
+
+"commit_id" = "blue"
+"change_id" = "magenta"
+
+# Unique prefixes and the rest for change & commit ids
+"prefix" = {}
+"rest" = "bright black"
+"divergent rest" = "red"
+"divergent prefix" = { fg = "red", underline = true }
+"hidden prefix" = "default"
+
+"author" = "yellow"
+"committer" = "yellow"
+"timestamp" = "cyan"
+"working_copies" = "green"
+"bookmark" = "green"
+"bookmarks" = "green"
+"local_bookmarks" = "green"
+"remote_bookmarks" = "green"
+"tag" = "magenta"
+"tags" = "magenta"
+"git_ref" = "cyan"
+"git_refs" = "cyan"
+"git_head" = "cyan"
+"divergent" = "red"
+"divergent change_id" = "red"
+"conflict" = "red"
+"empty" = "yellow"
+"placeholder" = "red"
+"description placeholder" = "yellow"
+"empty description placeholder" = "bright black"
+"separator" = "white"
+"elided" = "bright black"
+"root" = "green"
+
+"working_copy" = { bold = true }
+"working_copy commit_id" = "blue"
+"working_copy change_id" = "magenta"
+"working_copy author" = "yellow"
+"working_copy committer" = "yellow"
+"working_copy timestamp" = "cyan"
+"working_copy working_copies" = "green"
+"working_copy bookmark" = "magenta"
+"working_copy bookmarks" = "magenta"
+"working_copy local_bookmarks" = "magenta"
+"working_copy remote_bookmarks" = "magenta"
+"working_copy tag" = "magenta"
+"working_copy tags" = "magenta"
+"working_copy git_ref" = "green"
+"working_copy git_refs" = "green"
+"working_copy divergent" = "red"
+"working_copy divergent change_id" = "red"
+"working_copy conflict" = "red"
+"working_copy empty" = "yellow"
+"working_copy placeholder" = "red"
+"working_copy description placeholder" = "yellow"
+"working_copy empty description placeholder" = "bright black"
+
+"config_list name" = {}
+"config_list value" = {}
+"config_list source" = {}
+"config_list path" = {}
+"config_list overridden" = "bright black"
+"config_list overridden name" = "bright black"
+"config_list overridden value" = "bright black"
+"config_list overridden source" = "bright black"
+"config_list overridden path" = "bright black"
+
+"diff header" = { bold = true }
+"diff empty" = "cyan"
+"diff binary" = "cyan"
+"diff file_header" = { bold = true }
+"diff hunk_header" = "cyan"
+"diff removed" = { fg = "red" }
+"diff added" = { fg = "green" }
+"diff token" = { underline = true }
+"diff modified" = "blue"
+"diff untracked" = "cyan"
+"diff renamed" = "cyan"
+"diff copied" = "cyan"
+"diff access-denied" = { bg = "bright red" }
+
+"operation id" = "blue"
+"operation user" = "yellow"
+"operation time" = "cyan"
+"operation tags" = "magenta"
+"operation current_operation" = { bold = true }
+"operation current_operation id" = "blue"
+"operation current_operation user" = "yellow"
+"operation current_operation time" = "cyan"
+"operation current_operation tags" = "magenta"
+
+"node elided" = { fg = "bright black" }
+"node working_copy" = { fg = "cyan", bold = true }
+"node current_operation" = { fg = "cyan", bold = true }
+"node immutable" = { fg = "yellow", bold = true }
+"node conflicted" = { fg = "red", bold = true }
+
+"signature display" = "yellow"
+"signature key" = "cyan"
+"signature status good" = "green"
+"signature status unknown" = "yellow"
+"signature status bad" = "red"
+"signature status invalid" = "red"
