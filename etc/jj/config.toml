@@ -93,7 +93,7 @@ default-command = "status"
 "diff hunk_header" = "cyan"
 "diff removed" = { fg = "red" }
 "diff added" = { fg = "green" }
-"diff token" = { underline = true }
+"diff token" = { underline = false }
 "diff modified" = "blue"
 "diff untracked" = "cyan"
 "diff renamed" = "cyan"
