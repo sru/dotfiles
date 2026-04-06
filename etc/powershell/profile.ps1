@@ -4,6 +4,8 @@ if ($host.Name -eq 'ConsoleHost') {
 
   $params = @{
     EditMode = 'Emacs'
+    BellStyle = 'None'
+    PredictionSource = 'None'
     Colors = @{
       Command = "$([char]0x1b)[39m"
       Comment = "$([char]0x1b)[39;3m"
@@ -24,7 +26,6 @@ if ($host.Name -eq 'ConsoleHost') {
       Type = "$([char]0x1b)[39m"
       Variable = "$([char]0x1b)[39m"
     }
-    PredictionSource = 'None'
   }
   Set-PSReadLineOption @params
 
@@ -65,24 +66,12 @@ if ($host.Name -eq 'ConsoleHost') {
     $PSStyle.FileInfo.Extension.Clear()
   }
 
-  Set-Alias g git
+}
 
-  Remove-Item Alias:cat -ErrorAction SilentlyContinue
-  Remove-Item Alias:cd -ErrorAction SilentlyContinue
-  Remove-Item Alias:cp -ErrorAction SilentlyContinue
+Set-Alias g git
+
+if (Get-Command 'curl.exe' -ErrorAction SilentlyContinue) {
   Remove-Item Alias:curl -ErrorAction SilentlyContinue
-  Remove-Item Alias:dir -ErrorAction SilentlyContinue
-  Remove-Item Alias:echo -ErrorAction SilentlyContinue
-  Remove-Item Alias:ls -ErrorAction SilentlyContinue
-  Remove-Item Alias:man -ErrorAction SilentlyContinue
-  Remove-Item Alias:mv -ErrorAction SilentlyContinue
-  Remove-Item Alias:popd -ErrorAction SilentlyContinue
-  Remove-Item Alias:ps -ErrorAction SilentlyContinue
-  Remove-Item Alias:pushd -ErrorAction SilentlyContinue
-  Remove-Item Alias:pwd -ErrorAction SilentlyContinue
-  Remove-Item Alias:rm -ErrorAction SilentlyContinue
-  Remove-Item Alias:rmdir -ErrorAction SilentlyContinue
-  Remove-Item Alias:wget -ErrorAction SilentlyContinue
 }
 
 if (Get-Command 'yazi.exe' -ErrorAction SilentlyContinue) {
