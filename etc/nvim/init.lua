@@ -44,7 +44,7 @@ vim.o.joinspaces = true
 vim.o.laststatus = 3
 vim.o.lazyredraw = true
 vim.o.list = true
-vim.o.listchars = 'tab:>-,trail:-'
+vim.o.listchars = 'tab:>-,extends:>,precedes:<,trail:-'
 vim.o.modeline = false
 vim.o.number = false
 vim.o.ruler = false
@@ -61,6 +61,7 @@ vim.o.undofile = true
 vim.o.undolevels = 1000
 vim.o.wildmenu = true
 vim.o.wildmode = 'list:longest'
+vim.o.wrap = false
 
 vim.cmd.colorscheme('seon')
 vim.cmd('filetype indent off')
