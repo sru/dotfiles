@@ -23,6 +23,62 @@ local strip_trailing_whitespaces = function()
   vim.fn.winrestview(saved_view)
 end
 
+statusline_macro = function()
+  local reg = vim.fn.reg_recording()
+  if reg == '' then return '' end
+  return '%#DiagnosticError# * REC @' .. reg .. '%#StatusLine#'
+end
+
+vim.o.cmdheight = 0
+vim.o.pumborder = 'single'
+vim.o.winborder = 'single'
+require('vim._core.ui2').enable({
+  enable = true, -- Whether to enable or disable the UI.
+  msg = {
+    targets = {
+      [''] = 'msg',
+      empty = 'cmd',
+      bufwrite = 'msg',
+      confirm = 'cmd',
+      emsg = 'pager',
+      echo = 'msg',
+      echomsg = 'msg',
+      echoerr = 'pager',
+      completion = 'cmd',
+      list_cmd = 'pager',
+      lua_error = 'pager',
+      lua_print = 'msg',
+      progress = 'pager',
+      rpc_error = 'pager',
+      quickfix = 'msg',
+      search_cmd = 'cmd',
+      search_count = 'cmd',
+      shell_cmd = 'pager',
+      shell_err = 'pager',
+      shell_out = 'pager',
+      shell_ret = 'msg',
+      undo = 'msg',
+      verbose = 'pager',
+      wildlist = 'cmd',
+      wmsg = 'msg',
+      typed_cmd = 'cmd',
+    },
+    cmd = {
+      height = 0.5
+    },
+    dialog = {
+      height = 0.5,
+    },
+    msg = {
+      height = 0.5,
+      timeout = 4000,
+    },
+    pager = {
+      height = 1,
+    },
+  },
+})
+
 vim.g.netrw_home = vim.fn.stdpath('state')
 
 vim.o.autoindent = true
@@ -49,13 +105,13 @@ vim.o.modeline = false
 vim.o.number = false
 vim.o.ruler = false
 vim.o.shiftwidth = 2
-vim.o.shortmess = 'atI'
+vim.o.shortmess = 'atToOICqF'
 vim.o.showcmd = true
 vim.o.showmatch = false
 vim.o.showmode = true
 vim.o.smartcase = true
 vim.o.softtabstop = -1
-vim.o.statusline = ' %f %y%m%r%=L%l:%c '
+vim.o.statusline = ' %f %y%m%r%{%v:lua.statusline_macro()%}%=L%l:%c '
 vim.o.textwidth = 80
 vim.o.undofile = true
 vim.o.undolevels = 1000
