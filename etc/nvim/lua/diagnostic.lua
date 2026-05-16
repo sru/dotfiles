@@ -7,6 +7,7 @@ vim.diagnostic.config({
     border = 'single',
     source = 'if_many',
     header = '',
+    focusable = false,
   },
 })
 
