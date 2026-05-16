@@ -202,6 +202,18 @@ call s:highlight('Added', 'green', 'none', 'NONE')
 call s:highlight('Changed', 'blue', 'none', 'NONE')
 call s:highlight('Removed', 'red', 'none', 'NONE')
 
+" Diagnostics
+call s:highlight('DiagnosticError', 'red', 'none', 'NONE')
+call s:highlight('DiagnosticWarn', 'yellow', 'none', 'NONE')
+call s:highlight('DiagnosticInfo', 'black', 'none', 'NONE')
+call s:highlight('DiagnosticHint', 'white', 'none', 'NONE')
+call s:highlight('DiagnosticOk', 'green', 'none', 'NONE')
+call s:highlight('DiagnosticUnderlineError', 'none', 'none', 'underline', 'red')
+call s:highlight('DiagnosticUnderlineWarn', 'none', 'none', 'underline', 'yellow')
+call s:highlight('DiagnosticUnderlineInfo', 'none', 'none', 'underline', 'black')
+call s:highlight('DiagnosticUnderlineHint', 'none', 'none', 'underline', 'white')
+call s:highlight('DiagnosticUnderlineOk', 'none', 'none', 'underline', 'green')
+
 " Specific to vim help files.
 call s:highlight('helpHyperTextJump', 'magenta', 'none', 'NONE')
 call s:highlight('helpOption', 'blue', 'none', 'NONE')

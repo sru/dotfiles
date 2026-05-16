@@ -57,5 +57,6 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.keymap.set('n', 'Y', 'y$')
 
+require('diagnostic')
 require('statusline')
 require('trailing-whitespace')
