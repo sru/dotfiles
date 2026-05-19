@@ -24,7 +24,6 @@ vim.o.hlsearch = false
 vim.o.ignorecase = true
 vim.o.incsearch = true
 vim.o.joinspaces = true
-vim.o.lazyredraw = true
 vim.o.list = true
 vim.o.listchars = 'tab:>-,extends:>,precedes:<,trail:-'
 vim.o.modeline = false
