@@ -87,5 +87,5 @@ if (Get-Command 'yazi.exe' -ErrorAction SilentlyContinue) {
 }
 
 function Prompt {
-  '> '
+  "$([char]0x1b)[ q> "
 }
