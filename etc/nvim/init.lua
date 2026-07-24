@@ -51,15 +51,20 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.keymap.set("n", "Y", "y$")
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 
 require("diagnostic")
 require("statusline")
 require("trailing-whitespace")
 
 vim.pack.add({
+  "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/nvim-mini/mini.surround",
-  "https://github.com/stevearc/oil.nvim.git",
+  "https://github.com/stevearc/oil.nvim",
 })
+
+require("fzf-lua").setup()
+
 require("mini.surround").setup()
+
 require("oil").setup()
+vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })

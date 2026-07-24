@@ -4,13 +4,13 @@ vim.diagnostic.config({
   virtual_lines = false,
   signs = false,
   float = {
-    border = 'single',
-    source = 'if_many',
-    header = '',
+    border = "single",
+    source = "if_many",
+    header = "",
     focusable = false,
   },
 })
 
-vim.keymap.set('n', '<leader>d', function()
+vim.keymap.set("n", "<leader>d", function()
   vim.diagnostic.open_float()
 end)
