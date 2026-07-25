@@ -6,7 +6,8 @@ vim.o.winborder = "single"
 vim.o.list = true
 vim.o.listchars = "tab:>-,extends:>,precedes:<,trail:-"
 vim.o.number = false
-vim.o.shortmess = "atToOICqF"
+vim.o.shortmess = "aoOtTWICF"
+vim.o.ruler = false
 vim.o.showmatch = false
 vim.o.wrap = false
 
