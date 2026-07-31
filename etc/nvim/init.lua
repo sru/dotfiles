@@ -59,11 +59,14 @@ require("trailing-whitespace")
 
 vim.pack.add({
   "https://github.com/ibhagwan/fzf-lua",
+  "https://github.com/nvim-mini/mini.align",
   "https://github.com/nvim-mini/mini.surround",
   "https://github.com/stevearc/oil.nvim",
 })
 
 require("fzf-lua").setup()
+
+require("mini.align").setup()
 
 require("mini.surround").setup()
 
