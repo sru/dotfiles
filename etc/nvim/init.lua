@@ -64,7 +64,14 @@ vim.pack.add({
   "https://github.com/stevearc/oil.nvim",
 })
 
-require("fzf-lua").setup()
+require("fzf-lua").setup({
+  winopts = {
+    backdrop = 100,
+    preview = {
+      hidden = true,
+    },
+  },
+})
 
 require("mini.align").setup()
 
