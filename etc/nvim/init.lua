@@ -1,3 +1,5 @@
+vim.g.mapleader = ' '
+
 vim.g.netrw_home = vim.fn.stdpath("state")
 
 vim.o.background = "light"
@@ -10,6 +12,8 @@ vim.o.shortmess = "aoOtTWICF"
 vim.o.ruler = false
 vim.o.showmatch = false
 vim.o.wrap = false
+vim.o.laststatus = 3
+vim.o.statusline = " %f %m%r %= %l/%L:%v "
 
 vim.o.autoindent = true
 vim.o.expandtab = true
@@ -17,13 +21,9 @@ vim.o.shiftwidth = 2
 vim.o.softtabstop = -1
 
 vim.o.encoding = "utf-8"
-vim.o.autoread = true
-vim.opt.backspace = { "indent", "eol", "start" }
 vim.o.confirm = false
 vim.opt.cpoptions:remove({ "_" })
 vim.o.formatoptions = "ro/qj"
-vim.o.hidden = true
-vim.o.history = 10000
 vim.o.joinspaces = true
 
 vim.o.hlsearch = false
@@ -51,22 +51,67 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function() vim.o.formatoptions = "ro/qj" end,
 })
 
-vim.keymap.set("n", "Y", "y$")
-
-require("diagnostic")
-require("statusline")
 require("trailing-whitespace")
 
 vim.pack.add({
   "https://github.com/nvim-mini/mini.nvim",
 })
 
-require("mini.ai").setup()
-require("mini.align").setup()
-require("mini.operators").setup()
-require("mini.splitjoin").setup()
-require("mini.surround").setup()
+require("mini.misc").setup()
+local later = function(f) MiniMisc.safely("later", f) end
 
-require("mini.bracketed").setup()
-require("mini.files").setup()
-require("mini.pick").setup()
+later(function()
+  vim.diagnostic.config({
+    underline = true,
+    virtual_text = false,
+    virtual_lines = false,
+    signs = false,
+    float = {
+      border = "single",
+      source = "if_many",
+      header = "",
+      focusable = false,
+    },
+  })
+end)
+
+later(function() require("mini.ai").setup() end)
+later(function() require("mini.align").setup() end)
+later(function() require("mini.operators").setup() end)
+later(function() require("mini.splitjoin").setup() end)
+later(function() require("mini.surround").setup() end)
+
+later(function() require("mini.bracketed").setup() end)
+later(function() require("mini.bufremove").setup() end)
+later(function() require("mini.files").setup() end)
+later(function() require("mini.pick").setup() end)
+
+local new_scratch_buffer = function()
+  vim.api.nvim_win_set_buf(0, vim.api.nvim_create_buf(true, true))
+end
+
+vim.keymap.set("n", "<Leader>ba", "<Cmd>b#<CR>", { desc = "Buffer alternate" })
+vim.keymap.set("n", "<Leader>bd", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Buffer delete" })
+vim.keymap.set("n", "<Leader>bD", "<Cmd>lua MiniBufremove.delete(0, true)<CR>", { desc = "Buffer delete!" })
+vim.keymap.set("n", "<Leader>bs", new_scratch_buffer, { desc = "Buffer scratch" })
+vim.keymap.set("n", "<Leader>bw", "<Cmd>lua MiniBufremove.wipeout()<CR>", { desc = "Buffer wipeout" })
+vim.keymap.set("n", "<Leader>bW", "<Cmd>lua MiniBufremove.wipeout(0, true)<CR>", { desc = "Buffer wipeout!" })
+
+vim.keymap.set("n", "<Leader>ed", "<Cmd>lua MiniFiles.open()<CR>", { desc = "Explore current directory" })
+vim.keymap.set("n", "<Leader>ef", "<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "Explore file directory" })
+
+vim.keymap.set("n", "<Leader>fb", "<Cmd>Pick buffers<CR>", { desc = "Find buffers" })
+vim.keymap.set("n", "<Leader>ff", "<Cmd>Pick files<CR>", { desc = "Find files" })
+vim.keymap.set("n", "<Leader>fg", "<Cmd>Pick grep_live<CR>", { desc = "Find grep live" })
+vim.keymap.set("n", "<Leader>fG", '<Cmd>Pick grep pattern="<cword>"<CR>', { desc = "Find grep current word" })
+vim.keymap.set("n", "<Leader>fr", "<Cmd>Pick resume<CR>", { desc = "Find resume" })
+
+vim.keymap.set("n", "<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "LSP Action" })
+vim.keymap.set("n", "<Leader>ld", "<Cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Diagnostic popup" })
+vim.keymap.set("n", "<Leader>li", "<Cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "LSP Implementation" })
+vim.keymap.set("n", "<Leader>lh", "<Cmd>lua vim.lsp.buf.hover()<CR>", { desc = "LSP Hover" })
+vim.keymap.set("n", "<Leader>ll", "<Cmd>lua vim.lsp.codelens.run()<CR>", { desc = "LSP Code lens" })
+vim.keymap.set("n", "<Leader>lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", { desc = "LSP Rename" })
+vim.keymap.set("n", "<Leader>lR", "<Cmd>lua vim.lsp.buf.references()<CR>", { desc = "LSP Reference" })
+vim.keymap.set("n", "<Leader>ls", "<Cmd>lua vim.lsp.buf.definintions()<CR>", { desc = "LSP Definition" })
+vim.keymap.set("n", "<Leader>lt", "<Cmd>lua vim.lsp.buf.type_definitions()<CR>", { desc = "LSP Type definition" })
